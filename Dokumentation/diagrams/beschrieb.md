@@ -1,0 +1,1 @@
+In diesem Ordner können alle draw.io Diagramme abgelegt werden.

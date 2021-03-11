@@ -10,7 +10,7 @@ Die Erweiterung von MCS beinhaltet folgende Punkte:
 - Ergänzung der bestehenden Inhalte mit Gesetzestexten und Handbüchern
 - Integration der neuen Inhalte ins FE und BE.
 
-## Milestone 1
+## Ziel 1
 
 Als erstes Ziel sollen folgende Punkte erfüllt werden:
 

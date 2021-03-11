@@ -1,11 +1,6 @@
 # Risikoanalyse Woche xx
 
-## Risiko x
-
-### Beschrieb
-
-Da sehen wir ein Risiko
-
-### Reaktion / Massnahme(n)
-
-Das ist / sind unsere Massnahmen
+| Risiko | Eintrittswahrscheinlichkeit | Gewichtung | Massnahmen |
+| :----- | :-------------------------- | :----------|:-----------|
+| Risiko beschrieb | (gering/mittel/hoch) | (gering/mittel/hoch) | Beschrieb Präventiv / Gegenmassname |
+| Weiteres Risiko | ... | ... | ... |

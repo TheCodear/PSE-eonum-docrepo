@@ -6,6 +6,17 @@ db schema:
 
 
 
+klv_attachment_1a
+
+db schema:
+
+ambulant
+	copy db schema of chop
+	copy db schema of chop_chapters
+
+stationär
+	copy db schema of icd
+	copy db schema of icd_chapters
 ---
 Krankenpflege-Leistungsverordnung KLV, Anhang 1
 

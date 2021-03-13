@@ -50,7 +50,23 @@ und als HTML Dokument im Code verfügbar gemacht werden. Des weiteren bietet "No
 das HTML Dokument zu durchsuchen, beispielsweise mit CSS Selektoren. So können auf der BAG und BFS Seite die richtigen
 Links zu den richtigen Quellen gefunden werden und so die PDFs geholt werden.
 
-tbd: ein Beispiel
+Folgender Task besucht die BFS Website und holt das Kodierungshandbuch 2021:
+
+```
+task :get_handbuch do
+    base_url = 'https://www.bfs.admin.ch'
+    links = []
+    html_doc = Nokogiri::HTML(open(base_url + '/bfs/de/home/statistiken/gesundheit/nomenklaturen/medkk/instrumente-medizinische-kodierung.html'))
+    html_doc.css('div[data-url*="kodierungshandbuch"]').each do |div|
+      links << div['data-url']
+    end
+    link = links.first
+    detail_page_link = Nokogiri::HTML(open(base_url + link)).css('a[class]').first['href']
+    handbook_link = Nokogiri::HTML(open(base_url + detail_page_link)).css('a[class*="download-event"]').first['href']
+    reader = PDF::Reader.new(open(base_url + handbook_link))
+    puts reader.page_count
+  end
+```
 
 Im Task sollte dann auch gleich die Verarbeitung der PDFs geschehen und das Einfügen in die Datenbank...
 

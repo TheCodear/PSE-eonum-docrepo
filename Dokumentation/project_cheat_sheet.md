@@ -29,6 +29,12 @@ rails generate controller Book
 
 search_helper.rb
 
+is included in all controllers
+
+```
+include SearchHelper
+```
+
 highlights keywords
 
 #### Views

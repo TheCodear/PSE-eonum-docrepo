@@ -11,6 +11,7 @@ columnname | type | comment
 --- | --- | ---
 id | unique int| 
 chapter|int|
+chapter_title |text|necessary?
 chop_2021|character varying|
 text_de|text|
 text_fr|text|
@@ -23,8 +24,8 @@ columnname | type | comment
 id | xy| 
 chapter|2|
 chapter_title ?|Eingriffe an Hämorrhoiden|
-chop_2021|character varying|
-text_de|text|
+chop_2021|49.41 |
+text_de|Reposition von Hämorrhoiden|
 text_fr|text|
 text_it|text|
 version|character varying|

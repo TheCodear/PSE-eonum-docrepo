@@ -1,6 +1,6 @@
 # Anhang 1a der Krankenpflege-Leistungsverordnung (KLV)
 
-Anhang 1a der KLV enthält die Liste der nach Artikel 3c KLV grundsätzlich ambulant durchzuführende
+Anhang 1a der KLV enthält die Liste der nach Artikel 3c KLV grundsätzlich ambulant durchzuführenden Eingriffe und die Kriterien zugunsten einer stationären Durchführung.
 
 # klv1as
 

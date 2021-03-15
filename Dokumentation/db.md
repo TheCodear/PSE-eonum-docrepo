@@ -22,6 +22,11 @@ Krankenpflege-Leistungsverordnung KLV, Anhang 1
 
 title: klv_attachment_1
 
+columnname | type | comment
+--- | --- | ---
+a | a| a
+1 | 2 | 3
+
 db schema:
 id						unique int
 chapter					int 	(1- 11)

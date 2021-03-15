@@ -21,7 +21,7 @@ stationär
 
 #Krankenpflege-Leistungsverordnung KLV, Anhang 1
 
-title: klv_attachment_1
+title: klv1s
 
 db schema:
 columnname | type | comment
@@ -62,7 +62,24 @@ requirements_it	|-|
 valid from|22.8.1985/ 1.8.2006 	|
 
 
+title: klv1_chapters
+columnname | type | comment
+--- | --- | ---
+id | unique int| 
+chapter|int|
+subchapter|int|
+text_de|string|
+text_fr|string|
+text_it|string|
+version|string|
 
-store chaptertitle info in different table? similar to icd_chapters?
-
----
+eg.
+columnname | type | comment
+--- | --- | ---
+id | xy| 
+chapter|1|
+subchapter|4|
+text_de|Transplantationschirurgie|
+text_fr|-|
+text_it|-|
+version|01.01.2021|

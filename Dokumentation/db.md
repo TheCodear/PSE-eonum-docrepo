@@ -1,5 +1,7 @@
 # Anhang 1a der Krankenpflege-Leistungsverordnung (KLV)
 
+Anhang 1a der KLV enthält die Liste der nach Artikel 3c KLV grundsätzlich ambulant durchzuführende
+
 # klv1as
 
 db schema:
@@ -15,6 +17,8 @@ stationär
 	
 
 # Krankenpflege-Leistungsverordnung KLV, Anhang 1
+
+Der Anhang 1 der KLV enthält die hinsichtlich Wirksamkeit, Zweckmässigkeit und Wirtschaftlichkeit geprüften Leistungen, die von Ärzten und Ärztinnen oder Chiropraktoren und Chiorpraktorinnen erbrachten werden und bezeichnet die Kostenübernahme der obligatorischen Krankenpflegeversicherung. 
 
 ## title: klv1s
 

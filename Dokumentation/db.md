@@ -4,7 +4,9 @@ Anhang 1a der KLV enthält die Liste der nach Artikel 3c KLV grundsätzlich ambu
 
 
 I. Liste der grundsätzlich ambulant durchzuführenden elektiven Eingriffe
+
 II. Kriterien zugunsten einer stationären Durchführung
+
 # klv1as
 
 columnname | type | comment
@@ -36,7 +38,7 @@ version|character varying|
 columnname | type | comment
 --- | --- | ---
 id | unique int| 
-chapter|int|
+chapter|character varying|
 text_de|string|
 text_fr|string|
 text_it|string|
@@ -52,6 +54,30 @@ text_fr|-|
 text_it|-|
 version|Ausgabe vom 1. Januar 2021|
 
+
+# klv1as_stationary
+
+columnname | type | comment
+--- | --- | ---
+id | unique int| 
+chapter|character varying|
+category|text| can be null
+criteria|text|
+additional_info|text|
+ICD-10|string|
+version|character varying|
+
+eg. 
+
+columnname | type | comment
+--- | --- | ---
+id | xy| 
+chapter|2.1|
+category|Fehlbildungen|
+criteria|Angeborene Fehlbildungen am Herz-Kreislauf- und/oder Atmungssystem|
+additional_info|text|Ein * am Ende eines ICD-10-Kodes in der letzten Spalte der Tabelle bedeutet, dass alle Kodes des bezeichneten Stamms (= Buchstabe und Zahl vor *) mit den allfälligen weiteren Stellen eingeschlossen sind.
+ICD-10|Q20*–Q34*|
+version|Ausgabe vom 1. Januar 2021|
 
 # Krankenpflege-Leistungsverordnung KLV, Anhang 1
 

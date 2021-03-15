@@ -29,7 +29,7 @@ chop_2021|49.41 |
 text_de|Reposition von Hämorrhoiden|
 text_fr|text|
 text_it|text|
-additional_info|text|Folgende elektiven Eingriffe sind nur dann grundsätzlich ambulant durchzuführen, wenn:a. sie eine einzige Körperseite betreffen;b. es sich nicht um eine Rezidivoperation handelt.
+additional_info|Folgende elektiven Eingriffe sind nur dann grundsätzlich ambulant durchzuführen, wenn:a. sie eine einzige Körperseite betreffen;b. es sich nicht um eine Rezidivoperation handelt.|
 version|character varying|
 
 # klv1as_ambulant_chapters

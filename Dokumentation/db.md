@@ -36,7 +36,7 @@ version | string?|
 measure_de | string| 
 measure_fr | string| 
 measure_it | string| 
-Obligation to perform |  boolean| 
+Obligation to perform |  boolean| can be null
 requirements_de | string| 
 requirements_fr | string| 
 requirements_it | string| 

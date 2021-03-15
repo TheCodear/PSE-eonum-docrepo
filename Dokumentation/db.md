@@ -17,8 +17,9 @@ ambulant
 stationär
 	copy db schema of icd
 	copy db schema of icd_chapters
----
-Krankenpflege-Leistungsverordnung KLV, Anhang 1
+	
+
+#Krankenpflege-Leistungsverordnung KLV, Anhang 1
 
 title: klv_attachment_1
 
@@ -41,33 +42,26 @@ requirements_fr | string|
 requirements_it | string| 
 valid from | string?| 
 					
-					 	
- 				 
-			
- 			
-				
-
-
 eg.
-
-id 						xy
-chapter 				1
-subchapter 				4
-chaptertitle_de			Urologie und Proktologie
-chaptertitle_fr 		-
-chaptertitle_it 		-
-version 				01.01.2021
-measure_de				Extrakorporale Stosswellenlithotripsie (ESWL), Nierensteinzertrümmerung
-measure_fr 				-
-measure_it 				-
-Obligation to perform 	true
-requirements_de 		Indikationen: ESWL eignet sich:
+columnname | type | comment
+--- | --- | ---
+id |xy|
+chapter |1|
+subchapter|4|
+chaptertitle_de|Urologie und Proktologie|
+chaptertitle_fr|-|
+chaptertitle_it|-|
+version |01.01.2021|
+measure_de|Extrakorporale Stosswellenlithotripsie (ESWL), Nierensteinzertrümmerung|
+measure_fr |-|
+measure_it |-|
+Obligation to perform|true|
+requirements_de| Indikationen: ESWL eignet sich:
 						a. bei Harnsteinen des Nierenbeckens, b. bei Harnsteinen des Nierenkelches, c. bei Harnsteinen des Ureters,
-						falls die konservative Behandlung jeweils erfolglos geblieben ist und wegen der Lage, der Form und der Grösse des Steines ein Spontanabgang als unwahrscheinlich beurteilt wird.
-						Die mit der speziellen Lagerung des Patienten oder der Patientin verbundenen erhöhten Risiken bei der Narkose erfordern eine besonders kompetente fachliche und apparative Betreuung während der Narkose (spezielle Ausbildung der Ärzte und Ärztinnen sowie der Narkosegehilfen und -gehilfinnen und adäquate Überwachungsgeräte).
-requirements_fr 		-
-requirements_it			-		
-valid from				22.8.1985/ 1.8.2006 	
+						falls die konservative Behandlung jeweils erfolglos geblieben ist und wegen der Lage, der Form und der Grösse des Steines ein Spontanabgang als unwahrscheinlich beurteilt wird. Die mit der speziellen Lagerung des Patienten oder der Patientin verbundenen erhöhten Risiken bei der Narkose erfordern eine besonders kompetente fachliche und apparative Betreuung während der Narkose (spezielle Ausbildung der Ärzte und Ärztinnen sowie der Narkosegehilfen und -gehilfinnen und adäquate Überwachungsgeräte).|
+requirements_fr| -|
+requirements_it	|-|	
+valid from|22.8.1985/ 1.8.2006 	|
 
 
 

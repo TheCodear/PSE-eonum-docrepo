@@ -21,7 +21,7 @@ stationär
 
 # Krankenpflege-Leistungsverordnung KLV, Anhang 1
 
-title: klv1s
+## title: klv1s
 
 db schema:
 columnname | type | comment
@@ -64,7 +64,7 @@ requirements_it	|-|
 valid from|22.8.1985/ 1.8.2006 	|
 
 
-title: klv1_chapters
+## title: klv1_chapters
 columnname | type | comment
 --- | --- | ---
 id | unique int| 

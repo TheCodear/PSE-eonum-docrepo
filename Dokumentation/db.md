@@ -29,13 +29,14 @@ columnname | type | comment
 id | unique int| 
 chapter | int| (1- 11)
 subchapter | int| 
+subsubchapterid?||
 chaptertitle_de | string| 
 chaptertitle_fr | string| 
 chaptertitle_it | string| 
 version | string?| 
-measure_de | string| 
-measure_fr | string| 
-measure_it | string| 
+measure_de | string| can be null
+measure_fr | string| can be null
+measure_it | string| can be null
 Obligation to perform |  boolean| can be null
 requirements_de | string| 
 requirements_fr | string| 

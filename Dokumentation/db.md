@@ -1,14 +1,9 @@
-Anhang 1ader Krankenpflege-Leistungsverordnung (KLV)
+# Anhang 1a der Krankenpflege-Leistungsverordnung (KLV)
 
-klv_attachment_1a
-
-db schema:
-
-
-
-klv_attachment_1a
+# klv1as
 
 db schema:
+
 
 ambulant
 	copy db schema of chop
@@ -23,7 +18,6 @@ stationär
 
 ## title: klv1s
 
-db schema:
 columnname | type | comment
 --- | --- | ---
 id | unique int| 

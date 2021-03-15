@@ -12,6 +12,8 @@ http://www.testingeducation.org/conference/wtst3_pettichord9.pdf
 
 [Cheat sheet for terminal](http://cheat.errtheblog.com/)
 
+[Basic tutorial for haml](http://haml.info/tutorial.html)
+
 
 
 #### Ruby Controller

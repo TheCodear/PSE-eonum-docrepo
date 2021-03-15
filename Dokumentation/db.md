@@ -25,8 +25,8 @@ columnname | type | comment
 id | xy| 
 chapter|3|
 chapter_title |Einseitige Hernienoperationen|
-chop_2021|49.41 |
-text_de|Reposition von Hämorrhoiden|
+chop_2021|53.00 |
+text_de|Operation einer Inguinalhernie, nicht näher bezeichnet| 
 text_fr|text|
 text_it|text|
 additional_info|Folgende elektiven Eingriffe sind nur dann grundsätzlich ambulant durchzuführen, wenn:a. sie eine einzige Körperseite betreffen;b. es sich nicht um eine Rezidivoperation handelt.|

@@ -2,15 +2,24 @@
 
 Anhang 1a der KLV enthält die Liste der nach Artikel 3c KLV grundsätzlich ambulant durchzuführenden Eingriffe und die Kriterien zugunsten einer stationären Durchführung.
 
-# klv1as
-
-db schema:
 
 I. Liste der grundsätzlich ambulant durchzuführenden elektiven Eingriffe
 II. Kriterien zugunsten einer stationären Durchführung
+# klv1as
+
+columnname | type | comment
+--- | --- | ---
+id | unique int| 
+chapter|int|
+chop_2021|character varying|
+text_de|text|
+text_fr|text|
+text_it|text|
+version|character varying|
 
 
-# klv1as_chapters
+
+# klv1as_ambulant_chapters
 columnname | type | comment
 --- | --- | ---
 id | unique int| 
@@ -18,7 +27,7 @@ chapter|int|
 text_de|string|
 text_fr|string|
 text_it|string|
-version|string|
+version|character varying|
 
 eg.
 columnname | type | comment
@@ -42,7 +51,7 @@ columnname | type | comment
 id | unique int| 
 chapter | int| (1- 11)
 subchapter | int| 
-subsubchapterid?||
+subsubchapterid?|?|
 chaptertitle_de | string| 
 chaptertitle_fr | string| 
 chaptertitle_it | string| 

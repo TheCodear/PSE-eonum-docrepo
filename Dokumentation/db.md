@@ -6,15 +6,30 @@ Anhang 1a der KLV enthält die Liste der nach Artikel 3c KLV grundsätzlich ambu
 
 db schema:
 
+I. Liste der grundsätzlich ambulant durchzuführenden elektiven Eingriffe
+II. Kriterien zugunsten einer stationären Durchführung
 
-ambulant
-	copy db schema of chop
-	copy db schema of chop_chapters
 
-stationär
-	copy db schema of icd
-	copy db schema of icd_chapters
-	
+# klv1as_chapters
+columnname | type | comment
+--- | --- | ---
+id | unique int| 
+chapter|int|
+text_de|string|
+text_fr|string|
+text_it|string|
+version|string|
+
+eg.
+columnname | type | comment
+--- | --- | ---
+id | xy| 
+chapter|2|
+text_de|Eingriffe an Hämorrhoiden|
+text_fr|-|
+text_it|-|
+version|Ausgabe vom 1. Januar 2021|
+
 
 # Krankenpflege-Leistungsverordnung KLV, Anhang 1
 

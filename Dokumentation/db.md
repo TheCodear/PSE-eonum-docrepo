@@ -22,27 +22,30 @@ Krankenpflege-Leistungsverordnung KLV, Anhang 1
 
 title: klv_attachment_1
 
+db schema:
 columnname | type | comment
 --- | --- | ---
-a | a| a
-1 | 2 | 3
-
-db schema:
-id						unique int
-chapter					int 	(1- 11)
-subchapter 				int 
-chaptertitle_de			string
-chaptertitle_fr 		string
-chaptertitle_it 		string
-version 				string?
-measure_de				string
-measure_fr 				string
-measure_it 				string
-Obligation to perform 	boolean
-requirements_de 		string
-requirements_fr 		string
-requirements_it			string		
-valid from				string?
+id | unique int| 
+chapter | int| (1- 11)
+subchapter | int| 
+chaptertitle_de | string| 
+chaptertitle_fr | string| 
+chaptertitle_it | string| 
+version | string?| 
+measure_de | string| 
+measure_fr | string| 
+measure_it | string| 
+Obligation to perform |  boolean| 
+requirements_de | string| 
+requirements_fr | string| 
+requirements_it | string| 
+valid from | string?| 
+					
+					 	
+ 				 
+			
+ 			
+				
 
 
 eg.

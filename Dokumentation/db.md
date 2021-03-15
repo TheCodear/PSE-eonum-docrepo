@@ -16,18 +16,20 @@ chop_2021|character varying|
 text_de|text|
 text_fr|text|
 text_it|text|
+additional_info|text|
 version|character varying|
 
 eg.
 columnname | type | comment
 --- | --- | ---
 id | xy| 
-chapter|2|
-chapter_title ?|Eingriffe an Hämorrhoiden|
+chapter|3|
+chapter_title |Einseitige Hernienoperationen|
 chop_2021|49.41 |
 text_de|Reposition von Hämorrhoiden|
 text_fr|text|
 text_it|text|
+additional_info|text|Folgende elektiven Eingriffe sind nur dann grundsätzlich ambulant durchzuführen, wenn:a. sie eine einzige Körperseite betreffen;b. es sich nicht um eine Rezidivoperation handelt.
 version|character varying|
 
 # klv1as_ambulant_chapters

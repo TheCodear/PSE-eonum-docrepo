@@ -149,3 +149,35 @@ version|01.01.2021|
 
 
 # Medizinisches Kodierhandbuch
+
+## title: medcode_chapters
+
+columnname | type | comment
+--- | --- | ---
+id | unique int| 
+chapter|character varying|
+
+eg.
+
+columnname | type | comment
+--- | --- | ---
+id | xy| 
+chapter|Allgemeine Kodierrichtlinien für Prozeduren P00 – P11 |
+
+## title: medcode_subchapters
+
+columnname | type | comment
+--- | --- | ---
+id | unique int| 
+chapter|character varying| necessary????
+subchapter|character varying|
+title|text|
+
+eg.
+
+columnname | type | comment
+--- | --- | ---
+id | xy| 
+chapter|Allgemeine Kodierrichtlinien für Prozeduren P00 – P11|
+subchapter|P07a|
+title|Bilaterale Operationen|

@@ -88,8 +88,8 @@ Der Anhang 1 der KLV enthält die hinsichtlich Wirksamkeit, Zweckmässigkeit und
 columnname | type | comment
 --- | --- | ---
 id | unique int| 
-chapter | int| (1- 11)
-subchapter | int| 
+chapter | int| (1- 11) ?? fk?
+subchapter | int| ?? fk?
 subsubchapterid?|?|
 chaptertitle_de | string| 
 chaptertitle_fr | string| 

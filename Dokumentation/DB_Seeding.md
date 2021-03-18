@@ -18,7 +18,7 @@ Dieses Schema wird beim Ausführen von `rails db:schema:load` automatisch in das
 
 **ICDs in die Datenbank seeden**
 
-![seed_icd.png](images\seed_icd.png)
+<img src="images\seed_icd.png" alt="seed_icd.png" style="zoom:100%;" />
 
 ​																		`\db\seed_icd.rb`
 
@@ -45,7 +45,7 @@ Dieses Schema wird beim Ausführen von `rails db:schema:load` automatisch in das
 
 
 
-![DB_Auszug.png](images\DB_Auszug.png)
+<img src="images\DB_Auszug.png" alt="DB_Auszug.png" style="zoom:100%;" />
 
 ​																		`Auszug aus der Datenbank Tabelle icd_chapters`
 

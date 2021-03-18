@@ -46,9 +46,10 @@ integriert werden sollen?
 Diese Variante könnte mit folgenden Technologien umgesetzt werden:
 
 Die Packages "open-uri" und "Nokogiri" erlauben das Öffnen bzw. Parsen von Websiten. Damit kann eine Website abgerufen
-und als HTML Dokument im Code verfügbar gemacht werden. Des weiteren bietet "Nokogiri" auch entsprechende Methoden, um
+und als HTML Dokument im Code verfügbar gemacht werden. Des Weiteren bietet "Nokogiri" auch entsprechende Methoden, um
 das HTML Dokument zu durchsuchen, beispielsweise mit CSS Selektoren. So können auf der BAG und BFS Seite die richtigen
 Links zu den richtigen Quellen gefunden werden und so die PDFs geholt werden.
+Damit ein PDF gelesen werden kann, braucht es zusätzlich das gem "pdf-reader".
 
 Folgender Task besucht die BFS Website und holt das Kodierungshandbuch 2021:
 

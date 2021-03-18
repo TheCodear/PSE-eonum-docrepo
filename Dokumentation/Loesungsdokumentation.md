@@ -69,9 +69,11 @@ task :get_handbuch do
   end
 ```
 
-Im Task sollte dann auch gleich die Verarbeitung der PDFs geschehen und das Einfügen in die Datenbank...
+Im Task sollte dann auch gleich die Verarbeitung der PDFs geschehen und das Einfügen in die Datenbank. Hier stellt sich noch 
+die Frage nach dem Parsen, wie das genau gehen soll. Es gibt keine "Standardlösung", PDFs einfach so zu parsen und die Quellen
+enthalten auch entsprechend komplexere Teile (z.B. Tabellen).
 
-#### Datenablage und Datenverarbeitung
+#### Datenbank
 
 tbd
 
@@ -79,6 +81,6 @@ tbd
 
 tbd
 
-#### Frontendintegration
+#### Frontend
 
 tbd

@@ -12,6 +12,67 @@ http://www.testingeducation.org/conference/wtst3_pettichord9.pdf
 
 [Cheat sheet for terminal](http://cheat.errtheblog.com/)
 
+[Basic tutorial for haml](http://haml.info/tutorial.html)
+
+
+
+#### Ruby Controller
+
+- Logical center of application, coordinates interaction between user, views and model. 
+	- routs external requests to internal actions
+	- manages helpers which extend the capabilities of the view templates
+	- manages sessions 
+```
+rails generate controller Book
+```
+
+
+#### Helpers
+
+search_helper.rb
+
+is included in all controllers
+
+```
+include SearchHelper
+```
+
+highlights keywords
+
+#### Views
+
+json is handled by frontend
+
+
+#### Models
+
+Each entity (such as book) gets a table in the database named after it, but in the plural (books).
+
+Notice that you are capitalizing Book and Subject and using the singular form. This is a Rails paradigm that you should follow each time you create a model.
+
+```
+ruby script/generate model Book
+```
+
+create connection between models:
+
+has_one, has_many, belongs_to, and has_and_belongs_to_many.
+
+[More Model](https://www.tutorialspoint.com/ruby-on-rails/rails-models.htm)
+
+
+#### Migrations
+
+```
+rails generate migration table_name
+ 
+export RAILS_ENV = development
+//
+export RAILS_ENV = test 
+
+rake db:migrate
+```
+
 ## Setup
 
 ### rails db:reseed['data']

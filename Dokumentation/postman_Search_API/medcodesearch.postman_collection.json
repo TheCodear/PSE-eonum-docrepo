@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "aff44cb8-266e-4bb2-959d-00837f7f6d05",
+		"name": "medcodesearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DRGs",
+			"item": [
+				{
+					"name": "Get a list of all valid DRG versions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/drgs/versions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"drgs",
+								"versions"
+							]
+						},
+						"description": "Get a list of all valid DRG versions as a JSON array of strings\n\nGET /:locale/drgs/versions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one DRG by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/drgs/V3.0/P67A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"drgs",
+								"V3.0",
+								"P67A"
+							]
+						},
+						"description": "Get one DRG by its code and version as a JSON object\n\nGET /:locale/drgs/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one MDC by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/mdcs/V3.0/02",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"mdcs",
+								"V3.0",
+								"02"
+							]
+						},
+						"description": "Get one MDC by its code and version as a JSON object\n\nGET /:locale/mdcs/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one Partition by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/partitions/V3.0/B_M",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"partitions",
+								"V3.0",
+								"B_M"
+							]
+						},
+						"description": "Get one Partition by its code and version as a JSON object\n\nGET /:locale/partitions/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Search for DRGs by code, description text or relevant codes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/drgs/V3.0/search?max_results=2&search=Magen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"drgs",
+								"V3.0",
+								"search"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "2"
+								},
+								{
+									"key": "search",
+									"value": "Magen"
+								}
+							]
+						},
+						"description": "Search for DRGs by code, description text or relevant codes. Retrieve results as a JSON array.\n\nGET /:locale/drgs/:version/search"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADRGs",
+			"item": [
+				{
+					"name": "Get one ADRG by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/adrgs/V3.0/P67",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"adrgs",
+								"V3.0",
+								"P67"
+							]
+						},
+						"description": "Get one ADRG by its code and version as a JSON object.\n\nGET /:locale/adrgs/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Search for ADRGs by code, description text or relevant codes (ICD or CHOP)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/adrgs/V3.0/search?max_results=2&search=Magen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"adrgs",
+								"V3.0",
+								"search"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "2"
+								},
+								{
+									"key": "search",
+									"value": "Magen"
+								}
+							]
+						},
+						"description": "Search for ADRGs by code, description text or relevant codes (ICD or CHOP). Retrieve results as a JSON array.\n\nGET /:locale/adrgs/:version/search"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supplements / Zusatzentgelte",
+			"item": [
+				{
+					"name": "Get one supplement by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/supplements/V8.0/ZE-2019-24.11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"supplements",
+								"V8.0",
+								"ZE-2019-24.11"
+							]
+						},
+						"description": "Get one supplement by its code and version as a JSON object.\n\nGET /:locale/supplements/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Search for supplement by code or description text.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/supplements/V8.0/search?max_results=2&search=Magen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"supplements",
+								"V8.0",
+								"search"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "2"
+								},
+								{
+									"key": "search",
+									"value": "Magen"
+								}
+							]
+						},
+						"description": "Search for supplement by code or description text. Retrieve results as a JSON array.\n\nGET /:locale/supplement/:version/search"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHOPs",
+			"item": [
+				{
+					"name": "Get a list of all valid CHOP versions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/chops/versions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"chops",
+								"versions"
+							]
+						},
+						"description": "Get a list of all valid CHOP versions as a JSON array of strings.\n\nGET /:locale/chops/versions\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one CHOP code by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/chops/CHOP_2014/39.49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"chops",
+								"CHOP_2014",
+								"39.49"
+							]
+						},
+						"description": "Get one CHOP code by its code and version as a JSON object.\n\nGET /:locale/chops/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Search for CHOP codes by code, description text or inclusions.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/chops/CHOP_2014/search?max_results=2&search=Magen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"chops",
+								"CHOP_2014",
+								"search"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "2"
+								},
+								{
+									"key": "search",
+									"value": "Magen"
+								}
+							]
+						},
+						"description": "Search for CHOP codes by code, description text or inclusions. Retrieve results as a JSON array.\n\nGET /:locale/chops/:version/search"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one CHOP chapter by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/chop_chapters/CHOP_2014/C3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"chop_chapters",
+								"CHOP_2014",
+								"C3"
+							]
+						},
+						"description": "Get one CHOP chapter by its code and version as a JSON object.\n\nGET /:locale/chop_chapters/:version/:code"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ICDs",
+			"item": [
+				{
+					"name": "Get a list of all valid ICD versions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/icds/versions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"icds",
+								"versions"
+							]
+						},
+						"description": "Get a list of all valid ICD versions as a JSON array of strings.\n\nGET /:locale/icds/versions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one ICD code by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/icds/ICD10-GM-2014/T817",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"icds",
+								"ICD10-GM-2014",
+								"T817"
+							]
+						},
+						"description": "Get one ICD code by its code and version as a JSON object.\n\nGET /:locale/icds/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Search for ICD codes by code, description text, inclusions or synonyms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/icds/ICD10-GM-2014/search?max_results=2&search=Magen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"icds",
+								"ICD10-GM-2014",
+								"search"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "2"
+								},
+								{
+									"key": "search",
+									"value": "Magen"
+								}
+							]
+						},
+						"description": "Search for ICD codes by code, description text, inclusions or synonyms. Retrieve results as a JSON array.\n\nGET /:locale/icds/:version/search"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one ICD group by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/icd_groups/ICD10-GM-2014/A00-A09",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"icd_groups",
+								"ICD10-GM-2014",
+								"A00-A09"
+							]
+						},
+						"description": "Get one ICD group by its code and version as a JSON object.\n\nGET /:locale/icd_groups/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one ICD chapter by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/icd_chapters/ICD10-GM-2014/II",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"icd_chapters",
+								"ICD10-GM-2014",
+								"II"
+							]
+						},
+						"description": "Get one ICD chapter by its code and version as a JSON object.\n\nGET /:locale/icd_chapters/:version/:code"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TARMEDs",
+			"item": [
+				{
+					"name": "Get a list of all valid TARMED versions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/tarmeds/versions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"tarmeds",
+								"versions"
+							]
+						},
+						"description": "Get a list of all valid TARMED versions as a JSON array of strings.\n\nGET /:locale/tarmeds/versions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one TARMED code by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/tarmeds/TARMED_01.09/05.0910",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"tarmeds",
+								"TARMED_01.09",
+								"05.0910"
+							]
+						},
+						"description": "Get one TARMED code by its code and version as a JSON object.\n\nGET /:locale/tarmeds/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Search for TARMED codes by code, description text, inclusions or synonyms.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/tarmeds/TARMED_01.09/search?max_results=2&search=Magen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"tarmeds",
+								"TARMED_01.09",
+								"search"
+							],
+							"query": [
+								{
+									"key": "max_results",
+									"value": "2"
+								},
+								{
+									"key": "search",
+									"value": "Magen"
+								}
+							]
+						},
+						"description": "Search for TARMED codes by code, description text, inclusions or synonyms. Retrieve results as a JSON array."
+					},
+					"response": []
+				},
+				{
+					"name": "Get one TARMED chapter by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/tarmed_chapters/TARMED_01.09/05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"tarmed_chapters",
+								"TARMED_01.09",
+								"05"
+							]
+						},
+						"description": "Get one TARMED chapter by its code and version as a JSON object.\n\nGET /:locale/tarmed_chapters/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one TARMED group by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/tarmed_groups/TARMED_01.09/05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"tarmed_groups",
+								"TARMED_01.09",
+								"05"
+							]
+						},
+						"description": "Get one TARMED group by its code and version as a JSON object.\n\nGET /:locale/tarmed_groups/:version/:code"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one TARMED block by its code and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/de/tarmed_blocks/TARMED_01.09/05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"de",
+								"tarmed_blocks",
+								"TARMED_01.09",
+								"05"
+							]
+						},
+						"description": "Get one TARMED block by its code and version as a JSON object.\n\nGET /:locale/tarmed_blocks/:version/:code"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

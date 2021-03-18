@@ -1,6 +1,6 @@
 # **Datenbank Seeding anhand Beispiel icd_chapters**
 
-**Schema für Darstellung der icd_chapters in der Datenbank. **
+**Schema für Darstellung der icd_chapters in der Datenbank.**
 
 <img src="images\ICD.png" alt="ICD.png" style="zoom:67%;" />
 

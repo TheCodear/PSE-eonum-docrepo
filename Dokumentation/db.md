@@ -181,3 +181,10 @@ id | xy|
 chapter|Allgemeine Kodierrichtlinien für Prozeduren P00 – P11|
 subchapter|P07a|
 title|Bilaterale Operationen|
+
+Rundschreiben
+
+-> in medcodier hand buch fk einfügen falls rundschreiben code ändert
+was ist der usecase?
+
+rundschreiben mit unique dann alle untereinander + version

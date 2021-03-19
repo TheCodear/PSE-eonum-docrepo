@@ -91,6 +91,7 @@ id | unique int|
 chapter | int| (1- 11) ?? fk?
 subchapter | int| ?? fk?
 subsubchapterid?|?|
+subsubsubchapterid|?|
 chaptertitle_de | string| 
 chaptertitle_fr | string| 
 chaptertitle_it | string| 
@@ -111,6 +112,7 @@ id |xy|
 chapter |1|
 subchapter|4|
 subsubchapterid?|2|
+subsubsubchapterid|?|
 chaptertitle_de|Urologie und Proktologie|
 chaptertitle_fr|-|
 chaptertitle_it|-|

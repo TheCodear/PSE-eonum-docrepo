@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-20T13:26:58.530Z" agent="5.0 (Macintosh)" etag="Z1Lux9hB-4930MyH1-HC" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-20T13:33:48.798Z" agent="5.0 (Macintosh)" etag="Lwnpflz6LyhgJ-Vhlm0I" version="14.4.9" type="github">
   <diagram name="Page-1" id="929967ad-93f9-6ef4-fab6-5d389245f69c">
     <mxGraphModel dx="1433" dy="1013" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
@@ -68,7 +68,7 @@
           <mxGeometry x="720" y="790" width="250" height="210" as="geometry" />
         </mxCell>
         <mxCell id="xnGQ313D5UV577yq0LEZ-57" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;medcodierbuch_tabels&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em ; border: 1px solid rgb(0 , 0 , 0) ; border-collapse: collapse&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;uniqueId&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_de&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_fr&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_it&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Version&lt;br&gt;&lt;/td&gt;&lt;td&gt;Character Varying&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;" vertex="1" parent="1">
-          <mxGeometry x="390" y="1080" width="250" height="210" as="geometry" />
+          <mxGeometry x="390" y="1035" width="250" height="210" as="geometry" />
         </mxCell>
         <mxCell id="xnGQ313D5UV577yq0LEZ-59" value="&lt;font style=&quot;font-size: 16px&quot;&gt;*&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="360" y="136" width="40" height="30" as="geometry" />
@@ -95,7 +95,37 @@
           <mxGeometry x="690" y="870" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xnGQ313D5UV577yq0LEZ-70" value="&lt;font style=&quot;font-size: 16px&quot;&gt;*&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="490" y="1060" width="40" height="30" as="geometry" />
+          <mxGeometry x="490" y="1015" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="xnGQ313D5UV577yq0LEZ-73" target="xnGQ313D5UV577yq0LEZ-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-73" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;rundschreiben_chapters&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em ; border: 1px solid rgb(0 , 0 , 0) ; border-collapse: collapse&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;uniqueId&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;ChapterId&lt;/td&gt;&lt;td&gt;Character Varying&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_de&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_fr&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_it&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Version&lt;br&gt;&lt;/td&gt;&lt;td&gt;Character Varying&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1300" width="250" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="xnGQ313D5UV577yq0LEZ-76" target="xnGQ313D5UV577yq0LEZ-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="xnGQ313D5UV577yq0LEZ-76" target="xnGQ313D5UV577yq0LEZ-78">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-76" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;rundschreiben_Code&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em ; border: 1px solid rgb(0 , 0 , 0) ; border-collapse: collapse&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;uniqueId&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_de&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_fr&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_it&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Exmpl_Arrray&lt;br&gt;&lt;/td&gt;&lt;td&gt;Array&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Tabel_Array&lt;br&gt;&lt;/td&gt;&lt;td&gt;Array&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Version&lt;br&gt;&lt;/td&gt;&lt;td&gt;Character Varying&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1300" width="250" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-77" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;rundschreiben_examples&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em ; border: 1px solid rgb(0 , 0 , 0) ; border-collapse: collapse&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;uniqueId&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_de&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_fr&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_it&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Version&lt;br&gt;&lt;/td&gt;&lt;td&gt;Character Varying&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1300" width="250" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-78" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;rundschreiben_tabels&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em ; border: 1px solid rgb(0 , 0 , 0) ; border-collapse: collapse&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;uniqueId&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_de&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_fr&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Text_it&lt;br&gt;&lt;/td&gt;&lt;td&gt;Text&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Version&lt;br&gt;&lt;/td&gt;&lt;td&gt;Character Varying&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1545" width="250" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-79" value="&lt;font style=&quot;font-size: 16px&quot;&gt;*&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1380" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-80" value="&lt;font style=&quot;font-size: 16px&quot;&gt;*&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="690" y="1380" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xnGQ313D5UV577yq0LEZ-81" value="&lt;font style=&quot;font-size: 16px&quot;&gt;*&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1525" width="40" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

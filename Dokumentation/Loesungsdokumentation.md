@@ -73,9 +73,17 @@ Im Task sollte dann auch gleich die Verarbeitung der PDFs geschehen und das Einf
 die Frage nach dem Parsen, wie das genau gehen soll. Es gibt keine "Standardlösung", PDFs einfach so zu parsen und die Quellen
 enthalten auch entsprechend komplexere Teile (z.B. Tabellen).
 
-#### Datenbank
+D.h. hier braucht es die Lösung eines dedizierten Parsers.
+
+##### Parser
 
 tbd
+
+#### Datenbank
+
+Folgendes Diagramm zeigt das Schema Version 1.0:
+
+<img src="images/db_scheme.png" alt="db_scheme.png">
 
 #### API
 

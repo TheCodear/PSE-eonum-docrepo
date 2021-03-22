@@ -40,6 +40,7 @@
 			* Als Tabelle darstellen oder Untereinander? 
 		2. Teil:
 			* Wie strukturiert muss die Tabelle sein?
+			* Sollen Ausnahmen seperat angezeigt werden oder in Teil 1. integriert werden?
 				
 	* Suchresultat Highliten
 		* Gesuchter Begriff nur im Suchresultat markieren oder auch in der Detailanzeige? 

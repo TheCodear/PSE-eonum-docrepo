@@ -8,7 +8,6 @@ Da wir uns in ein bestehendes Projekt eingearbeitet haben, haben wir für die 1.
 * Erarbeitung erster Lösungsansätze
   * DB Schema
   * Webcrawler
-  * Parser
   * Frontend Mockups
 
 **1. War der Inhalt der Stories nach dem Planning Game klar?**
@@ -37,7 +36,7 @@ Die Projektspezifischen Tasks wurden realistisch eingeschätzt. Allerdings wurde
 Ja. Da wir uns in ein bestehendes Projekt mit neuen Technologien 
 (Elasticsearch, Ruby on Rails, Vertiefung Angular und PostgreSQL) einarbeiten mussten, war uns die Wichtigkeit eines guten Grundverständnisses bewusst. Wegen der Grösse des Projekts wurden Teilbereiche definiert, wodurch der Aufwand pro Person zum Kennenlernen der Technologien minimiert werden konnte.
 
-***5. Wurde das Task Tempo realistisch eingeschätzt? Gab es Engpässe?***
+5. Wurde das Task Tempo realistisch eingeschätzt? Gab es Engpässe?
 
 Das Task Tempo wurde realistisch eingeschätzt. Es kam zu keinen Engpässen.
 
@@ -45,15 +44,15 @@ Das Task Tempo wurde realistisch eingeschätzt. Es kam zu keinen Engpässen.
 
 Ja, in den internen Meetings. Der Zeitplan der Traktanden wurde meist nicht eingehalten. Neu werden die jeweiligen Traktanden, welche vorbereitet werden können, als solche markiert und vor dem Meeting schriftlich gesammelt. So kann die Ideensammlung und Meinungsbildung ausgelagert und die Kommunikation während des Meetings optimiert werden.
 
-***7. War die Arbeitsbelastung aller Teammitglieder ähnlich? Sind alle zufrieden?***
+**7. War die Arbeitsbelastung aller Teammitglieder ähnlich? Sind alle zufrieden?**
 
-Mehr oder weniger. Es gab Abweichung bezüglich welche Rollen die jeweiligen Teammitglieder haben, oder wer sich für eine Präsentation vorbereiten musste. Die Arbeitsbelastung für diese 1. Iteration wird von den Teammitgliedern als obere Grenze empfunden. Dies wurde aber für den Einstieg des Projekts so erwartet und am Anfang besprochen.
+Mehr oder weniger. Es gab Abweichung bezüglich welche Rollen die jeweiligen Teammitglieder besetzen, oder wer sich für eine Präsentation vorbereiten musste. Die Arbeitsbelastung für diese 1. Iteration wird von den Teammitgliedern als maximal verfügbarer Zeitaufwand empfunden. Dies wurde aber für den Einstieg des Projekts so erwartet und anfangs besprochen.
 
 **8. Gab es ”Leerläufe“ oder Wartezeiten aufgrund der Abhängigkeiten zwischen den Tasks?**
 
 Nein. Es kam zu keinen Wartezeiten oder "Leerläufen". Die Task konnten unabhängig voneinander definiert werden, so dass immer etwas zu erledigen war.
 
-***9. Wieviel Zeit hat jedes Teammitglied investiert für folgende Tasks?***
+**9. Wieviel Zeit hat jedes Teammitglied investiert für folgende Tasks?**
 
 | Tasks | Thea | Jan | Janni | Sascha | Tobias |
 | :----- | :-------------------------- | :----------|:-----------|:-----------|:-----------|
@@ -61,31 +60,34 @@ Nein. Es kam zu keinen Wartezeiten oder "Leerläufen". Die Task konnten unabhän
 | Implementierung von Testfällen* | 0 h | 0 h | 0 h | 0 h | 0 h |
 | Testen* | 0 h | 0 h | 0 h | 0 h | 0 h |
 | Einarbeitung in neue Technologien | 11 h | 6 h | 14.5 h | 7.3 h | 5.5 h |
-| *Systemadministration* | 11 h | 14.5 h | 8.5 h | 13 h | 11.5 h |
+| Systemadministration | 11 h | 14.5 h | 8.5 h | 13 h | 11.5 h |
   
 *dazu gab es keine Aktivitäten in der 1. Iteration
 
 **10. Was waren unsere Hindernisse?**
 
-Das Aufsetzen des Backends war unser grösstes Hindernis. 
-Es gab Probleme beim Installieren von Ruby on Rails auf 
-Windows, woraufhin alle Teammitglieder mit einem solchen Betriebssystem
-das Backend in einer VM mit Linux basiertem OS aufsetzen mussten. Auch die Zuteilung von zu wenig Arbeitsspeicher in der VM machte Probleme.
+Das Aufsetzen des Backends war unser grösstes Hindernis. Im ReadMe des Backend waren keine Vorgaben zu den Systemanforderungen gegeben. Es gab Probleme beim Installieren von Ruby on Rails auf 
+Windows wegen Versionenkonfliktenen, woraufhin alle Teammitglieder mit einem solchen Betriebssystem
+das Backend in einer VM mit Linux basiertem OS aufsetzen mussten. Auch die Zuteilung von zu wenig Speicher für die VM machte Probleme.
 
 **11. Wie war unser Arbeitsprozess im Allgemeinen?**
 * strukturierte Arbeitsweise
-* fliessende und natürliche Kommunikation untereinander
-* Trello Board mit Abschätzung der Storypoints für Tasks hat sich bewährt und wird so weiter beibehalten
-* Meeting am Do. 13:00 Uhr wird auch beibehalten
+* natürliche Kommunikation untereinander
+* Trello Board mit Abschätzung der Storypoints für Tasks hat sich bewährt und wird beibehalten
+* internes Meeting am Do. 13:00 Uhr wird auch beibehalten
 * Zeitplan der Traktanden wurden meistens nicht eingehalten
 * der Kontakt zum Kunden hätte früher aufgenommen werden sollen bei 
-  den Problemen mit dem Aufsetzen
+  den Problemen bezüglich des Aufsetzens des Backends
 
 **12. Was können wir besser machen?**
-* Vorbereitung der Traktanden um Meetingsdauer einhalten zu können
-* nicht scheuen nach Hilfe bei eonum zu fragen.
+* schriftliche Vorbereitung der Traktanden um Zeitplan einhalten zu können
+* bei Problemenstellungen schneller den Kontakt zu eonum suchen
 
-**13. Wo ist für die nächste Iteration diesbezüglich der grösste Aufwand zu erwarten?**
+**13. Was haben wir gelernt?**
+* erste Erfahrungen mit dem Kundenkontakt
+* Kommunikation über technische Inhalte mit dem Kunden kann auf Grund verschiedener Erwartungen schwierigkeiten bereiten
+
+**14. Wo ist für die nächste Iteration diesbezüglich der grösste Aufwand zu erwarten?**
 
 Der grösste Aufwand wird beim Parsen der Dokumente erwartet. Dieser Task wurde mit 5 Storypoints gewichtet (= 20 h). Des Weiteren wird der Task zum Erstellen aller Modelle für alle PDF Quellen im Backend mit 4 Storypoints als zweitgrösster Aufwand bewertet (= 16 h). Zusätzlich werden die sonstigen Tätigkeiten wie wöchentliche Deliverables, Präsentationen und die verschiedenen Meetings auch einen grossen Teil der Zeit einnehmen.
 

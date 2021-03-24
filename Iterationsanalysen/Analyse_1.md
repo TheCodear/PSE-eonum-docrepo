@@ -36,7 +36,7 @@ Die Projektspezifischen Tasks wurden realistisch eingeschätzt. Allerdings wurde
 Ja. Da wir uns in ein bestehendes Projekt mit neuen Technologien 
 (Elasticsearch, Ruby on Rails, Vertiefung Angular und PostgreSQL) einarbeiten mussten, war uns die Wichtigkeit eines guten Grundverständnisses bewusst. Wegen der Grösse des Projekts wurden Teilbereiche definiert, wodurch der Aufwand pro Person zum Kennenlernen der Technologien minimiert werden konnte.
 
-5. Wurde das Task Tempo realistisch eingeschätzt? Gab es Engpässe?
+**5. Wurde das Task Tempo realistisch eingeschätzt? Gab es Engpässe?**
 
 Das Task Tempo wurde realistisch eingeschätzt. Es kam zu keinen Engpässen.
 

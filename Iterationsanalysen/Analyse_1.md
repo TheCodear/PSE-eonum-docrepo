@@ -59,8 +59,8 @@ Nein. Es kam zu keinen Wartezeiten oder "Leerläufen". Die Task konnten unabhän
 | Implementierung von Stories* | 0 h | 0 h | 0 h | 0 h | 0 h |
 | Implementierung von Testfällen* | 0 h | 0 h | 0 h | 0 h | 0 h |
 | Testen* | 0 h | 0 h | 0 h | 0 h | 0 h |
-| Einarbeitung in neue Technologien | 11 h | 6 h | 14.5 h | 7.3 h | 5.5 h |
-| Systemadministration | 11 h | 14.5 h | 8.5 h | 13 h | 11.5 h |
+| Einarbeitung in neue Technologien | 17 h | 6 h | 18.5 h | 10.3 h | 12 h |
+| Systemadministration (Aufsetzen, administrative Tasks der Rollen) | 19 h | 25.6 h | 9.5 h | 18 h | 14.5 h |
   
 *dazu gab es keine Aktivitäten in der 1. Iteration
 
@@ -76,12 +76,11 @@ das Backend in einer VM mit Linux basiertem OS aufsetzen mussten. Auch die Zutei
 * Trello Board mit Abschätzung der Storypoints für Tasks hat sich bewährt und wird beibehalten
 * internes Meeting am Do. 13:00 Uhr wird auch beibehalten
 * Zeitplan der Traktanden wurden meistens nicht eingehalten
-* der Kontakt zum Kunden hätte früher aufgenommen werden sollen bei 
-  den Problemen bezüglich des Aufsetzens des Backends
+* der Kontakt zum Kunden wegen der Probleme bezüglich des Aufsetzens des Backends hätte früher aufgenommen werden sollen
 
 **12. Was können wir besser machen?**
 * schriftliche Vorbereitung der Traktanden um Zeitplan einhalten zu können
-* bei Problemenstellungen schneller den Kontakt zu eonum suchen
+* bei Problemstellungen schneller den Kontakt zu eonum suchen
 
 **13. Was haben wir gelernt?**
 * erste Erfahrungen mit dem Kundenkontakt

@@ -88,11 +88,11 @@ Folgende Gems / Libs sind für den Parser bis jetzt betrachtet worden:
 - Nebst Ruby-Gems besteht auch die Möglichkeit, den Parser / Konverter in Python zu schreiben. Hier gibt es dedizierte Libs, 
   welche PDFs verarbeiten können (PDFMiner, PyPDF2, pdfrw, slate, camelot)
   
-Lösungsansätze:
+*Verfolgter Lösungsansatz*
 
 Für den KLV Anhang 1 ist gegeben, dass alles in Tabellenform ist, ausser der Überschriften der Abschnitte. Ansonsten ist die
 Tabelle aber immer gleich aufgebaut, nämlich mit "Massnahmen", "Leistungspflicht", "Voraussetzungen" und "gültig ab". Da es nicht
-möglich ist, gleichzeitig normalen Text und Tabellen zu extrahieren, bietet sich hier folgende Idee an:
+möglich ist, gleichzeitig normalen Text und Tabellen zu extrahieren, wird folgender Ansatz verfolgt:
   
 Da alle Überschriften und Abschnitte im Inhaltsverzeichnis aufgelistet sind, auch mit den jeweiligen Seitenzahlen, kann man
 zweistufig vorgehen: Extrahiere zuerst aus dem Inhaltsverzeichnis Informationen über das Dokument. Insbesondere die Überschriften,
@@ -101,8 +101,50 @@ gehe gemäss diesen auf die jeweiligen Seiten, extrahiere die Tabellen und extra
 Informationen, die dann in die Datenbank geschrieben werden. So kann man sicher sein, dass man zu jeder Tabelle, die man extrahiert
 auch den Abschnitt weiss, bzw. dass aller Inhalt gemäss dem Inhaltsverzeichnis aufgenommen wird.
 
-Dazu muss man also zuerst das Inhaltsverzeichnis lokalisieren, aus diesem alle Informationen extrahieren und dann die entsprechenden
-Seiten besuchen, um die Tabellen zu extrahieren.
+Dazu muss das Inhaltsverzeichnis zuerst identifiziert und geparsed werden. Die Informationen, die zu sammeln sind, sind der Abschnitt
+und die zugehörigen Seiten.
+Dann wird Abschnitt für Abschnitt abgearbeitet, zuerst jeweils auf den Seiten die Tabellen extrahiert und dann alle Tabellen zusammengefügt.
+Dabei muss auf folgendes aufgepasst werden:
+- Es kann sein, dass ein Eintrag über eine Seite hinausgeht, insb. wenn nur in der Spalte Voraussetzung etwas steht auf der neuen Seite,
+dann gehört der Inhalt noch zur letzten Zeile der vorherigen Seite.
+- Bei der Version 2020 ist auf einer neuen Seite nicht mehr eine Header Zeile drin (mit Massnahme, Leistungspflicht, etc.), bei
+  der Version 2021 jedoch schon.
+    
+Nachdem die Tabellen zusammengefügt worden sind, müssen die Informationen daraus gewonnen werden, Objekte erstellt werden, die
+dann in die DB geschrieben werden können. Dazu folgendes Vorgehen:
+1. Erstelle zuerst für das Chapter einen Eintrag (Überschrift, Nr, etc.), damit dann die ID für die darunterliegenden Massnahmen
+   vorhanden ist.
+   
+2. Dann lese eine Zeile ein. Mit der Massnahme soll ein Measure Objekt erstellt werden, ausser die Spalten Leistungspflicht, Voraussetzungen
+   und gültig ab sind leer, dann erstelle kein Measure-Objekt. Falls diese Spalten nicht leer sind, erstelle einen DB Eintrag für die Massnahme,
+   um dann eine ID für den (Leistungspfl, Vor, gültig)-Eintrag zu bekommen. Aus diesen Tabellen soll dann ein KLV-Eintrag erstellt werden.
+   In jedem Fall speichere die gelesene Massnahme in einer Variablen zwischen.
+   
+3. Lese die nächste Zeile ein. Hier gibt es nun drei Möglichkeiten 
+   
+   a. Ist die Massnahme Spalte Leer, dann erstelle aus den anderen Spalteneinträge ein KLV mit derselben ID auf die Measure wie bei
+   der Zeile zuvor.
+   
+   b. Beginnt die Massnahme mit einem Bindestrich ('-'), dann erstelle einen neuen Massnahme-Eintrag mit der eingelesenen Massnahme
+   und der zwischengespeicherten Massnahme als Präfix und erstelle für die anderen Spalteneinträge einen KLV-Eintrag mit der Id 
+   der gerade erstellten Massnahme.
+   
+   c. Ist die Massnahme ohne Bindestrich und nicht leer, verfahre wie unter 2.
+   
+4. Lies die nächste Zeile ein und verfahre wie unter 3.
+
+Falls die Spalte Leistungspflicht leer ist und auch die Spalte Massnahme leer ist, dann muss der Leistungspflichteintrag der vorherigen
+Zeile übernommen werden.
+   
+   
+
+
+*Alternativer Lösungsansatz*
+
+Man könnte das Parsen bzw. das Konvertieren des PDFs in ein maschinenlesbares Format auch auslagern in ein Python-Skript. Python
+bietet viele mächtige libs und Werkzeuge, die das Parsen erleichtern könnten...
+Es ist jedoch vorzuziehen, eine Lösung in Ruby zu bauen, wenn das möglich ist, da dann nicht noch Technologiewechsel etc. 
+vollzogen werden müssen...
 
 #### Datenbank
 

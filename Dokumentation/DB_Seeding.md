@@ -1,5 +1,5 @@
 # on mac use:
-rails db:reseed\['data']
+'rails db:reseed\['data']'
 
 # **Datenbank Seeding anhand Beispiel icd_chapters**
 

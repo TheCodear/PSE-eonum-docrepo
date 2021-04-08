@@ -27,23 +27,8 @@ Die zu integrierenden Datensätze sind die Anhänge 1 und 1a des KLV sowie das K
 Rundschreiben. Erstere finden sich [hier](https://www.bag.admin.ch/bag/de/home/versicherungen/krankenversicherung/krankenversicherung-leistungen-tarife/Aerztliche-Leistungen-in-der-Krankenversicherung/anhang1klv.html)
  und das Kodierhandbuch mit dem Rundschreiben [hier](https://www.bfs.admin.ch/bfs/de/home/statistiken/gesundheit/nomenklaturen/medkk/instrumente-medizinische-kodierung.html).
 
-Im Moment werden die anderen Daten über ein weiteres Data Repository der Applikation zur Verfügung gestellt und von dort
-mit Rake Tasks in die Datenbank geladen. Für die neuen Datenquellen bietet sich natürlich die gleiche Möglichkeit, jedoch
-müssten dann die jeweiligen PDFs manuell immer hinzugefügt werden...
-
-Eine andere Variante ist folgende:
-Ein Rake Task (mit mehreren Subtasks) besucht die Quellseiten, holt die PDFs dort ab und lädt sie dann in die Datenbank.
-
-Bei dieser Variante stellen sich noch folgende Fragen:
-
-- Soll der Task gescheduled werden (jährlich für KLV Anhänge und Kodierhandbuch, halbjährlich für Rundschreiben)?
-- Oder soll der Task jeweils manuell angestossen werden?
-- Ist die produktive Umgebung vom Medcodesearch BE durch irgendwelche Firewalls / Proxies geschützt, sodass man nicht
-aufs Web direkt zugreifen kann?
-- Wie generisch sollen die Tasks gehalten werden? Gibt es eine Anforderung, dass auch dynamisch weitere Quellen
-integriert werden sollen?
-  
-Diese Variante könnte mit folgenden Technologien umgesetzt werden:
+Es soll nun in einem ersten Schritt der KLV Anhang 1 mit dem Webcrawler abgegriffen werden. Das soll mit Rake Tasks geschehen, wie
+folgendes Beispiel zeigt:
 
 Die Packages "open-uri" und "Nokogiri" erlauben das Öffnen bzw. Parsen von Websiten. Damit kann eine Website abgerufen
 und als HTML Dokument im Code verfügbar gemacht werden. Des Weiteren bietet "Nokogiri" auch entsprechende Methoden, um
@@ -69,15 +54,97 @@ task :get_handbuch do
   end
 ```
 
-Im Task sollte dann auch gleich die Verarbeitung der PDFs geschehen und das Einfügen in die Datenbank. Hier stellt sich noch 
-die Frage nach dem Parsen, wie das genau gehen soll. Es gibt keine "Standardlösung", PDFs einfach so zu parsen und die Quellen
-enthalten auch entsprechend komplexere Teile (z.B. Tabellen).
+Im Task sollte dann das geholte PDF abgelegt werden und dann der Task für das Parsen der Dokumente angestossen werden, sobald
+alle Dokumente abgeholt sind, bzw. evtl. zuerst der Task für die Konvertierung der PDFs in ein maschinenlesbares Format.
 
-D.h. hier braucht es die Lösung eines dedizierten Parsers.
+Die Konverter / Parser - Thematik ist im Moment noch ein grosser weisser Fleck, im Folgenden werden Optionen für den Parser
+diskutiert.
 
 ##### Parser
 
-tbd
+Folgende Gems / Libs sind für den Parser bis jetzt betrachtet worden:
+
+- pdf-reader: ist ein Ruby-Gem, welches ermöglicht, PDF Files zu öffnen und auch gewisse Extraktionen zu machen (v.a. Text
+  kann aus dem PDF herausextrahiert werden, dies ist jedoch nicht sehr akkurat...). Zudem kann das Dokument auf sehr tiefer
+  Ebene durchgegangen werden, d.h. man kann low-level objects abgreifen. Um damit aber etwas anzufangen, bräuchte es rel. viel
+  PDF Knowledge, deshalb nicht unbedingt geeignet.
+  
+- yomu: Ist ein weiteres Ruby-Gem, welches PDFs öffnen und auch umwandeln, bzw. Metadaten abgreifen kann. Die Transformation in
+  ein HTML-File funktioniert auch relativ gut, aber für Tabellenstrukturen wird der ganze Inhalt durcheinander gewürfelt, d.h.
+  auch nicht alleinig geeignet.
+  
+- Docsplit ist ein weiteres Ruby-Gem, mit dem PDFs gesplittet werden können oder auch Text extrahiert werden kann, aber auch
+  da ist die Text-Extraktion nicht geeignet, da so überhaupt keine Struktur der PDFs übernommen wird. Einzig was von Nutzen sein
+  könnte, ist die Fähigkeit, das PDFs in einzelne Seiten zu splitten.
+  
+- Neben den Ruby-Gems, gibt es auch noch die Möglichkeit, mit System-Calls die Befehle `pdftotext` bzw. `pdftohtml` auszuführen.
+  Diese wandeln die PDFs in Text bzw. HTML files um, mit sogar relativ guter Accuracy, jedoch gehen auch da im HTML beispielsweise
+  die Tabellenstrukturen verloren, also auch da nicht alleinig geeignet für das Konvertieren / Parsen der PDFs.
+  
+- Iguvium: ist ein Ruby-Gem mit dem sich Tabellen aus einem PDF auslesen lassen und verschiedenst konvertieren (in Arrays 
+  direkt in Ruby, in CSV, etc.). Damit könnte also das Problem der Tabellen in den Files gelöst werden. Diese Gem braucht
+  aber Ghostscript als Abhängigkeit installiert auf dem OS, auf dem es läuft.
+  
+- Nebst Ruby-Gems besteht auch die Möglichkeit, den Parser / Konverter in Python zu schreiben. Hier gibt es dedizierte Libs, 
+  welche PDFs verarbeiten können (PDFMiner, PyPDF2, pdfrw, slate, camelot)
+  
+*Verfolgter Lösungsansatz*
+
+Für den KLV Anhang 1 ist gegeben, dass alles in Tabellenform ist, ausser der Überschriften der Abschnitte. Ansonsten ist die
+Tabelle aber immer gleich aufgebaut, nämlich mit "Massnahmen", "Leistungspflicht", "Voraussetzungen" und "gültig ab". Da es nicht
+möglich ist, gleichzeitig normalen Text und Tabellen zu extrahieren, wird folgender Ansatz verfolgt:
+  
+Da alle Überschriften und Abschnitte im Inhaltsverzeichnis aufgelistet sind, auch mit den jeweiligen Seitenzahlen, kann man
+zweistufig vorgehen: Extrahiere zuerst aus dem Inhaltsverzeichnis Informationen über das Dokument. Insbesondere die Überschriften,
+bzw. Kapitel, auf welcher Seite diese zu finden sind, auf wie viele Seiten sich das erstreckt. Dann sammle diese Informationen und
+gehe gemäss diesen auf die jeweiligen Seiten, extrahiere die Tabellen und extrahiere dann aus den Tabellen jeweils die notwendigen
+Informationen, die dann in die Datenbank geschrieben werden. So kann man sicher sein, dass man zu jeder Tabelle, die man extrahiert
+auch den Abschnitt weiss, bzw. dass aller Inhalt gemäss dem Inhaltsverzeichnis aufgenommen wird.
+
+Dazu muss das Inhaltsverzeichnis zuerst identifiziert und geparsed werden. Die Informationen, die zu sammeln sind, sind der Abschnitt
+und die zugehörigen Seiten.
+Dann wird Abschnitt für Abschnitt abgearbeitet, zuerst jeweils auf den Seiten die Tabellen extrahiert und dann alle Tabellen zusammengefügt.
+Dabei muss auf folgendes aufgepasst werden:
+- Es kann sein, dass ein Eintrag über eine Seite hinausgeht, insb. wenn nur in der Spalte Voraussetzung etwas steht auf der neuen Seite,
+dann gehört der Inhalt noch zur letzten Zeile der vorherigen Seite.
+- Bei der Version 2020 ist auf einer neuen Seite nicht mehr eine Header Zeile drin (mit Massnahme, Leistungspflicht, etc.), bei
+  der Version 2021 jedoch schon.
+    
+Nachdem die Tabellen zusammengefügt worden sind, müssen die Informationen daraus gewonnen werden, Objekte erstellt werden, die
+dann in die DB geschrieben werden können. Dazu folgendes Vorgehen:
+1. Erstelle zuerst für das Chapter einen Eintrag (Überschrift, Nr, etc.), damit dann die ID für die darunterliegenden Massnahmen
+   vorhanden ist.
+   
+2. Dann lese eine Zeile ein. Mit der Massnahme soll ein Measure Objekt erstellt werden, ausser die Spalten Leistungspflicht, Voraussetzungen
+   und gültig ab sind leer, dann erstelle kein Measure-Objekt. Falls diese Spalten nicht leer sind, erstelle einen DB Eintrag für die Massnahme,
+   um dann eine ID für den (Leistungspfl, Vor, gültig)-Eintrag zu bekommen. Aus diesen Tabellen soll dann ein KLV-Eintrag erstellt werden.
+   In jedem Fall speichere die gelesene Massnahme in einer Variablen zwischen.
+   
+3. Lese die nächste Zeile ein. Hier gibt es nun drei Möglichkeiten 
+   
+   a. Ist die Massnahme Spalte Leer, dann erstelle aus den anderen Spalteneinträge ein KLV mit derselben ID auf die Measure wie bei
+   der Zeile zuvor.
+   
+   b. Beginnt die Massnahme mit einem Bindestrich ('-'), dann erstelle einen neuen Massnahme-Eintrag mit der eingelesenen Massnahme
+   und der zwischengespeicherten Massnahme als Präfix und erstelle für die anderen Spalteneinträge einen KLV-Eintrag mit der Id 
+   der gerade erstellten Massnahme.
+   
+   c. Ist die Massnahme ohne Bindestrich und nicht leer, verfahre wie unter 2.
+   
+4. Lies die nächste Zeile ein und verfahre wie unter 3.
+
+Falls die Spalte Leistungspflicht leer ist und auch die Spalte Massnahme leer ist, dann muss der Leistungspflichteintrag der vorherigen
+Zeile übernommen werden.
+   
+   
+
+
+*Alternativer Lösungsansatz*
+
+Man könnte das Parsen bzw. das Konvertieren des PDFs in ein maschinenlesbares Format auch auslagern in ein Python-Skript. Python
+bietet viele mächtige libs und Werkzeuge, die das Parsen erleichtern könnten...
+Es ist jedoch vorzuziehen, eine Lösung in Ruby zu bauen, wenn das möglich ist, da dann nicht noch Technologiewechsel etc. 
+vollzogen werden müssen...
 
 #### Datenbank
 

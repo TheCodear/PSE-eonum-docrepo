@@ -73,6 +73,112 @@ export RAILS_ENV = test
 rake db:migrate
 ```
 
+### Migration How-to's
+[Source](guides.rubyonrails.org/active_record_migrations)
+
+#### How to generate a migration file:
+	rails g migration AppropriateName
+This will generate you a file like this:
+```
+class AppropriateName < ActiveRewcord::Migration[6.0]
+  def change
+  end
+end
+```
+
+#### Add new column to a XY-db in ruby:
+	rails g migration Add"Column"To"Table" newcolumn1:text newcolumn2:string etc.
+	rails db:migrate
+it creates a migration file, which defines a new change method within it, so the existing db-table will be updated
+
+Remove Column from table in ruby:
+rails g migration Remove"Column"From"Table" column:string
+
+
+#### Rename a table name in ruby:
+create a migration file like this:
+```
+class RenameOldTableToNewTable < ActiveRecord::Migration
+  def change
+    rename_table :old_table_name, :new_table_name
+  end
+end
+```
+
+#### How to delete a db-table in ruby:
+Create a migration file like this:
+```
+class DropTablename < ActiveRecord::Migration
+  def change
+    drop_table :products
+  end
+end
+```
+You can also go into the terminal and do the following:
+
+	rails db //opens up the db console
+	drop table Tablename;
+	\q
+
+#### Joint tables etc
+tbe
+
+### How to create a model & finally get a JSON response
+Rails console:
+
+	rails g controller Klv1s index --skip-routes
+
+Create route:
+
+	get 'klv1s', to: 'klv1s#index'
+
+Create model:
+
+	rails g model Klv1 code:string text_de:text text_fr:text text_it:text version:string
+	rails db:migrate
+
+Add content to model: Rails console:
+
+	klv1 = Klv1.new(code: "1291.2021", text_de: "Die Schweiz ist jung", text_fr: "Bonjour monsieur Bonaparte", text_it: "Quanta costa, mozarella pizza", version: "CHE-21")
+	klv1 = Klv1.new(code: "1291.2021.v2", text_de: "Corona ist ein Bier", text_fr: "Bonjour, du Baguette", text_it: "Leonardo DaVinci", version: "CHE-22")
+	klv1.save
+
+Handle request in controller and generate output:
+
+	class Klv1sController < ApplicationController
+	  def index
+	    @klv1s = Klv1.all
+	    render json: @klv1s
+	  end
+	end
+
+## Git Cheatsheet
+
+### Branches
+
+#### Go into branch
+
+	git ls-remote 			//shows you all branches
+	git fetch --all 		//fetches all branches
+	git checkout BranchName		//goes into BranchName
+
+#### Create new branch
+
+	git checkout -b YourNewBranch DevBranch //Creates a new subbranch of the DevBranch
+
+#### Push changes to your subbranch
+
+	git commit -am "Your commit message"	//Commits all added changes to your current branch
+	git push origin YourSubBranch		//Pushes the commited changes to the defined branch
+
+#### Delete local branch
+
+	git branch -D BranchName	//Deletes defined branch
+
+#### Create Push request / merge with branch above
+
+tbe
+
 ## Setup
 
 ### rails db:reseed['data']

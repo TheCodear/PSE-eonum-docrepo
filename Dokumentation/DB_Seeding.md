@@ -1,3 +1,6 @@
+# on mac use:
+'rails db:reseed \ ['data']' (no " ")
+
 # **Datenbank Seeding anhand Beispiel icd_chapters**
 
 **Schema für Darstellung der icd_chapters in der Datenbank.**

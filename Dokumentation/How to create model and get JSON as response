@@ -1,0 +1,22 @@
+Rails console:
+ rails g controller Klv1s index --skip-routes
+
+Create route:
+  get 'klv1s', to: 'klv1s#index'
+  
+Create model:
+  rails g model Klv1 code:string text_de:text text_fr:text text_it:text version:string
+  rails db:migrate
+
+Add content to model: Rails console:
+klv1 = Klv1.new(code: "1291.2021", text_de: "Die Schweiz ist jung", text_fr: "Bonjour monsieur Bonaparte", text_it: "Quanta costa, mozarella pizza", version: "CHE-21")
+klv1 = Klv1.new(code: "1291.2021.v2", text_de: "Corona ist ein Bier", text_fr: "Bonjour, du Baguette", text_it: "Leonardo DaVinci", version: "CHE-22")
+klv1.save
+
+Handle request in controller and generate output:
+class Klv1sController < ApplicationController
+  def index
+    @klv1s = Klv1.all
+    render json: @klv1s
+  end
+end

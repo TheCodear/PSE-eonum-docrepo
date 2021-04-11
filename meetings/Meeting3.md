@@ -31,6 +31,8 @@
 	- Known Bugs and Fixes
 
 	- ??? 2tes Dokument? 
+	
+	- Abhängig davon wie weit wir bis Donnerstag kommen
 
 
 # Bier

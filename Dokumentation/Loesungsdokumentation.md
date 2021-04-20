@@ -19,9 +19,22 @@ Als erstes Ziel sollen folgende Punkte erfüllt werden:
 - Überall wo das Wort ’Protonen-Strahlentherapie’ vorkommt, soll es markiert werden.
 - Ich kann nun auf ein Resultat klicken und mehr darüber lesen.
 
+Dieses Ziel wurde in den Iterationen 2 & 3 für die Quelle KLV Anhang 1 erarbeitet, für die Quelle Medizinisches Kodierhandbuch soll in einem PoC ein Lösungsansatz in den Iterationen 3 & 4 erarbeitet werden.
+
 ### Beschreibung System und Lösungsansätze
 
 #### Datenabholung
+
+Die Quelle KLV Anhang 1 wird automatisiert von der BAG Seite abgeholt. Dafür gibt es eine Webcrawler-Klasse, die diese Abholung übernimmt. Die Vorgehensweise ist relativ simpel: 
+Zuerst wird überprüft, welche Versionen des KLV Anhang 1 bereits vorhanden sind, dann werden die fehlenden Versionen abgeholt.
+
+Um herauszufinden, welche Versionen verfügbar sind, wird die ältest verfügbare Version hard-coded gesetzt (Version 2 vom Jahr 2020). Dann wird geschaut, was die momentane Zeit ist. Davon wird die letzte verfügbare Version abgeleitet (Jan-Jun -> Version 1 des aktuellen Jahres, Jul-Dez -> Version 2 des aktuellen Jahres). Mit diesen beiden Rand-Versionen werden alle Versionen dazwischen berechnet. Dann wird im Data-Folder (dort wo die PDFs dann auch abgelegt werden) geschaut, welche dieser Versionen bereits vorhanden sind. Hierbei ist noch wichtig zu erwähnen, dass nur jeweils nach der Deutschen Version gesucht wird, da die Versionen dann auch immer in allen drei Sprachen geholt werden (d.h. wenn eine deutsche Version gefunden wird, wird davon ausgegangen, dass auch die französische und italienische Version vorhanden sind).
+
+Schliesslich werden die fehlenden PDFs von der BAG Seite abgeholt und im Data-Folder für die weitere Prozessierung abgelegt.
+
+Technisch basiert der Webcrawler auf den beiden Ruby-Gems 'nokogiri' und 'open-uri'. Zu beachten ist beim Technischen auch noch, dass davon ausgegangen wird, dass die PDFs in einem <div> HTML Tag mit der Klasse "mod mod-download" sind und jeweils "Gesamtliste" / "Édition complète" / "Edizione completa" im Titel beinhalten. Auch die Seite auf das BAG ist hard-coded. Sollte sich in diesen Dingen jemals etwas ändern, dann wird der Webcrawler nicht mehr funktionieren!
+ 
+ -- Archiv
 
 Die zu integrierenden Datensätze sind die Anhänge 1 und 1a des KLV sowie das Kodierhandbuch und das dazugehörige
 Rundschreiben. Erstere finden sich [hier](https://www.bag.admin.ch/bag/de/home/versicherungen/krankenversicherung/krankenversicherung-leistungen-tarife/Aerztliche-Leistungen-in-der-Krankenversicherung/anhang1klv.html)
@@ -61,6 +74,33 @@ Die Konverter / Parser - Thematik ist im Moment noch ein grosser weisser Fleck, 
 diskutiert.
 
 ##### Parser
+
+Nach dem Abholen der KLV Anhang 1 Versionen werden diese durch einen Parser verarbeitet. Da der KLV Anhang 1 hauptsächlich aus Tabellen besteht, ist auch hier die Idee relativ simpel: Parse die drei Sprachen einer Version nacheinander, füge die Resultate zusammen und schreibe sie in die Datenbank.
+
+Für das Parsen eines einzelnen PDFs wird folgendermassen vorgegangen:
+Zuerst wird geschaut, auf welchen Seiten des PDFs das Inhaltsverzeichnis zu finden ist. Dann werden die einzelnen Einträge des Verzeichnisses herausgelesen und jeweils registriert, welches Kapitel auf welcher Seite beginnt und auf welcher Seite endet.
+
+Diese Informationen werden dann im Hauptschritt verwendet. Es wird nun Kapitel für Kapitel durchgegangen, die Seiten, die zu diesem Kapitel gehören, werden über einen OCR-Mechanismus gescannt und die erkannten Tabellen werden extrahiert und zu einer ganzen Tabelle zusammengefügt.
+
+Beim Zusammenfügen der einzelnen Tabellen werden folgende Punkte beachtet:
+ - Die Tabellen-Köpfe werden entfernt
+ - Wenn in der ersten Zeile der Tabelle nur in der Spalte Voraussetzung etwas steht, dann wird der Inhalt zur letzten Zeile der vorherigen Tabelle hinzugefügt: der Inhalt ist über zwei Seiten verteilt
+ - Wenn in der ersten Zeile der Tabelle nur in der Spalte gültig ab etwas steht, dann wird der Inhalt zur letzten Zeile der vorherigen Tabelle hinzugefügt: der Inhalt ist über zwei Seiten verteilt
+ - Wenn nur in den Spalten Voraussetzung und gültig ab etwas steht, sowie die Spalte gültig ab nicht mit einem Grossbuchstaben beginnt und in der vorherigen Zeile (der lezten Zeile der vorherigen Tabelle) in der Spalte gültig ab '/' als letztes Zeichen vorkommt, dann wird der Inhalt zur letzten Zeile der vorherigen Tabelle hinzugefügt: der Inhalt ist über zwei Seiten verteilt
+ - Wenn in der ersten Spalte (Massnahme) der Inhalt mit einem Kleinbuchstaben beginnt, dann wird der Inhalt zur letzten Zeile der vorherigen Tabelle hinzugefügt: der Inhalt ist über zwei Seiten verteilt
+ 
+Wenn die Tabellen zusammengefügt worden sind, dann wird die ganze Tabelle Zeile für Zeile durchgegangen und es werden Massnahme-Objekte kreiert. Dabei wird folgendermassen vorgegangen:
+- Wenn in der Massnahmen Spalte ein normaler Eintrag ist, wird ein neues Massnahme-Objekt kreiert, die Felder Leistungspflicht bis gültig ab werden in einem KLV-Objekt diesem Massnahme Objekt hinzugefügt.
+- Wenn in der Massnahmen Spalte kein Eintrag ist, dann werden die andere Spalten als KLV-Objekt dem letzten Massnahme-Objekt angehängt.
+- Wenn in der Massnahmen Spalte die Massnahme mit '-' beginnt, dann wird diese Massnahme prefixed, d.h. die letzte normale Massnahme wird vor den Bindestrich hinzugefügt und alles wird als neues Massnahmen-Objekt gespeichert.
+- Leere Leistungspflicht Felder werden mit dem letzten gelesenen Eintrag gelesen.
+
+Wenn dann die Tabelle in Objekte umgewandelt worden ist, dann werden die Objekte mit den (falls vorhanden) anderen Sprachen zusammengemerged. Dabei sind foldende Punkte wichtig:
+- Beim mergen der Massnahme-Objekte wird zuerst überprüft, ob die dazugehörigen KLVs auch äquivalent sind, d.h. ob die Leistungspflicht dieselbe ist und ob die Gültigkeit auch dieselbe ist. Wenn das der Fall ist, werden die Sprachen gemerged, ansonsten wird das Massnahme-Objekt ohne zu mergen mit der nächsten verfügbaren Massnahmen-Nummer versehen und am darüberliegenden Kapitel angehängt. Dieser Fall sollte so selten als möglich auftreten, trotzdem ist er wegen Inkonsistenzen in den PDFs nicht auszuschliessen.
+
+Sind alle drei Sprachen geparsed, werden die Objekte in die dazugehörigen Tabellen der Datenbank mit den dazugehörigen Verbindungen gespeichert. Dann ist das Parsen einer Version abgeschlossen.
+
+-- Archiv
 
 Folgende Gems / Libs sind für den Parser bis jetzt betrachtet worden:
 

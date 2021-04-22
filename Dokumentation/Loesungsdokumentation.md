@@ -32,9 +32,9 @@ Um herauszufinden, welche Versionen verfügbar sind, wird die ältest verfügbar
 
 Schliesslich werden die fehlenden PDFs von der BAG Seite abgeholt und im Data-Folder für die weitere Prozessierung abgelegt.
 
-Technisch basiert der Webcrawler auf den beiden Ruby-Gems 'nokogiri' und 'open-uri'. Zu beachten ist beim Technischen auch noch, dass davon ausgegangen wird, dass die PDFs in einem <div> HTML Tag mit der Klasse "mod mod-download" sind und jeweils "Gesamtliste" / "Édition complète" / "Edizione completa" im Titel beinhalten. Auch die Seite auf das BAG ist hard-coded. Sollte sich in diesen Dingen jemals etwas ändern, dann wird der Webcrawler nicht mehr funktionieren!
+Technisch basiert der Webcrawler auf den beiden Ruby-Gems 'nokogiri' und 'open-uri'. Zu beachten ist beim Technischen auch noch, dass davon ausgegangen wird, dass die PDFs in einem `<div>` HTML Tag mit der Klasse "mod mod-download" sind und jeweils "Gesamtliste" / "Édition complète" / "Edizione completa" im Titel beinhalten. Auch die Seite auf das BAG ist hard-coded. Sollte sich in diesen Dingen jemals etwas ändern, dann wird der Webcrawler nicht mehr funktionieren!
  
- -- Archiv
+ -- Archiv --
 
 Die zu integrierenden Datensätze sind die Anhänge 1 und 1a des KLV sowie das Kodierhandbuch und das dazugehörige
 Rundschreiben. Erstere finden sich [hier](https://www.bag.admin.ch/bag/de/home/versicherungen/krankenversicherung/krankenversicherung-leistungen-tarife/Aerztliche-Leistungen-in-der-Krankenversicherung/anhang1klv.html)
@@ -100,7 +100,12 @@ Wenn dann die Tabelle in Objekte umgewandelt worden ist, dann werden die Objekte
 
 Sind alle drei Sprachen geparsed, werden die Objekte in die dazugehörigen Tabellen der Datenbank mit den dazugehörigen Verbindungen gespeichert. Dann ist das Parsen einer Version abgeschlossen.
 
--- Archiv
+Technisch gibt es zum Parser zu sagen, dass die Ruby Gems 'pdf-reader' und 'iguvium' verwendet werden. 'iguvium' basier auf
+OCR Technik, d.h. das PDF wird implizit in Bilder umgewandelt und die Bilder werden dann wieder eingescannt. Dabei erkennt
+das Gem eine Tabelle und stellt den Inhalt auch als Array zur Verfügung. Damit die Auslesung funktioniert, muss `ghostscript`
+installiert sein.
+
+-- Archiv --
 
 Folgende Gems / Libs sind für den Parser bis jetzt betrachtet worden:
 

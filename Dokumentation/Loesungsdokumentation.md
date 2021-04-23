@@ -19,7 +19,7 @@ Als erstes Ziel sollen folgende Punkte erfüllt werden:
 - Überall wo das Wort ’Protonen-Strahlentherapie’ vorkommt, soll es markiert werden.
 - Ich kann nun auf ein Resultat klicken und mehr darüber lesen.
 
-Dieses Ziel wurde in den Iterationen 2 & 3 für die Quelle KLV Anhang 1 erarbeitet, für die Quelle Medizinisches Kodierhandbuch soll in einem PoC ein Lösungsansatz in den Iterationen 3 & 4 erarbeitet werden.
+Dieses Ziel wurde in den Iterationen 2 & 3 für die Quelle KLV Anhang 1 erarbeitet, für die Quelle medizinisches Kodierhandbuch soll in einem PoC ein Lösungsansatz in den Iterationen 3 & 4 erarbeitet werden.
 
 ### Beschreibung System und Lösungsansätze
 

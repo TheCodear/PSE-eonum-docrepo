@@ -42,3 +42,13 @@ Wäre es möglich den Mapper (Vorgänger vom Ingest Attachment Plugin) zu verwen
 https://www.elastic.co/guide/en/elasticsearch/plugins/5.6/mapper-attachments.html
 
 https://github.com/elastic/elasticsearch/tree/2.4/plugins/mapper-attachments
+
+### 7.5 17:30 Sascha
+
+Pdf in Base64 umwandeln in Ruby: 
+  ```bundle exec rails c
+  => file = open("tmp/file.pdf")
+  #> #File>File:tmp/receipts.pdf>
+  => base_64 = Base64.encode64(file.read)
+  #> "HVBGA6GF7sK....HAHUASH/askfohahau=\n"
+```

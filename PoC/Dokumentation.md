@@ -35,3 +35,8 @@ und der neuesten ES Version geht, da bin ich aber noch nicht sehr weit...
 - Ansätze konkretisieren (was genau machen, technisch v.a.)
 - Struktur im BE machen? (models, controller, etc.) -> weiss nicht ob sinnvoll...
 - Weiter ausprobieren mit "Ingest Attachment Plugin"
+
+### 7.5 16:50
+
+Wäre es möglich den Mapper (Vorgänger vom Ingest Attachment Plugin) zu verwenden? <br>
+https://www.elastic.co/guide/en/elasticsearch/plugins/5.6/mapper-attachments.html

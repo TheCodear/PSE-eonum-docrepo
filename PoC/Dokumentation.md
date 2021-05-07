@@ -1,3 +1,37 @@
 # PoC - Hauptdokumentation
 
-tbd
+## Ansätze
+
+* Indexiere ganzes Pdf und schauen, was zurückkommt.
+* Pdf in einzelne Abschnitte trennen und schaue, was zurück kommt.
+* Benutze Highlight um Fragmentgrösse zu definieren und schaue, wie
+  viel zurück kommt.
+* Kompromiss wäre, Pdf als ganzes zu durchsuchen und beschränkte
+  Seitenzahl mit übereinstimmenden Anfragen auf Tabelle durchführen. Wie verhälts sich diese?
+  
+TODO: weiter verfeinern!
+  
+## Entscheide / fixe Outcomes
+
+...
+
+## Activity Log
+
+### 7.5. 15:27 Jan
+
+Alles ein bisschen angeschaut -> denke müssen Ansätze noch ein bisschen
+konkretisieren, d.h. wie wollen wir es genau ausprobieren? <br> Denn identifizierte Probleme:
+* Backend von eonum verwendet ES Version 2.4.6, in dieser Version gibt es das "Ingest Attachment Plugin"
+noch nicht, d.h. entweder müssen sie ES updaten oder wir müssen etwas anderes probieren...
+  
+* Ruby bietet auch keine direkte Integration des Plugins an, d.h. müssen hier den Umweg direkt
+über ES machen (direkte calls)...
+  
+Ansonsten bin ich gerade noch am Ausprobieren, wie es mit dem "Ingest Attachment Plugin"
+und der neuesten ES Version geht, da bin ich aber noch nicht sehr weit...
+
+-> Noch TODO:
+
+- Ansätze konkretisieren (was genau machen, technisch v.a.)
+- Struktur im BE machen? (models, controller, etc.) -> weiss nicht ob sinnvoll...
+- Weiter ausprobieren mit "Ingest Attachment Plugin"

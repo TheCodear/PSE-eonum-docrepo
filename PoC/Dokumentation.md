@@ -52,3 +52,9 @@ Pdf in Base64 umwandeln in Ruby:
   => base_64 = Base64.encode64(file.read)
   #> "HVBGA6GF7sK....HAHUASH/askfohahau=\n"
 ```
+
+### 8.5 12:30 Tobi
+
+Using Tika in Ruby
+
+https://github.com/yomurb/yomu

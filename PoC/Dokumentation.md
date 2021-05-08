@@ -62,4 +62,4 @@ https://github.com/yomurb/yomu
 https://stories.algolia.com/indexing-pdf-or-other-file-contents-for-searching-b2499c23568f
 
 - funktioniert recht gut für Text. Tabellen in querformat failen (S. 51 - 54)
-- Nicht querformat kommen gar nicht so schlecht
+- Nicht querformat kommen gar nicht so schlecht (S. 90)

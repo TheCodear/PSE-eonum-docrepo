@@ -17,6 +17,13 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 9.5. 16:00
+
+Route `poc/search` wurde erstellt & Controller für poc wurde angefangen. War mir noch nicht sicher 
+wie man die Query mit dem Request an Elasticsearch senden muss. Direct calls oder via Model, welches noch zu machen wäre?
+
+Beispiel `localhost:3000/de/poc/search?search=Laser&fragment_size=40`
+
 ### 8.5. 17:40 Jan
 
 Erster Versuch, das Medizinische Kodierungshandbuch zu indexieren ist auf

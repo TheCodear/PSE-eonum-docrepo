@@ -30,7 +30,12 @@ Der Ansatz:
 Zu beachten:
 - rails db:migrate ausführen
 
-- im poc.rake file den task "Encode pdf" ausführen
+- Das [Medizinische Kodierhandbuch](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.14628240.html) 
+  ist unter `medcodesearch/lib/assets` abgespeichert
+  
+- Pfad zu PDF anpassen in poc.rake
+
+- im poc.rake file den task "Encode pdf" ausführen via `rake poc:encodePdf`
 
 - mit curl eine Suche absetzten z.B.
 ```

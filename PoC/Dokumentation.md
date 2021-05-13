@@ -2,8 +2,8 @@
 
 ## Ansätze
 
-* Indexiere ganzes Pdf und schauen, was zurückkommt.
-* Pdf in einzelne Abschnitte trennen und schaue, was zurück kommt.
+* Indexiere ganzes Pdf und schauen, was zurückkommt. -> nicht weiter verfolgt
+* Pdf in einzelne Abschnitte trennen und schauen, was zurück kommt. -> verfolgt & verfeinert
 * Benutze Highlight um Fragmentgrösse zu definieren und schaue, wie
   viel zurück kommt.
 * Kompromiss wäre, Pdf als ganzes zu durchsuchen und beschränkte

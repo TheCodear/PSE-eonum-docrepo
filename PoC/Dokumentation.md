@@ -17,6 +17,32 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 13.5. 16:24 Jan
+
+Es ist auch möglich, den base64 String direkt in einem PDF Viewer anzuzeigen. Um das auszutesten,
+habe ich eine kleine Angular App gebaut, die eigentlich nur die lib `ng2-pdf-viewer` verwendet.
+Dann kann man im HTML dieser Komponente diesen PDF Viewer einbinden:
+```html
+<pdf-viewer [src]="obj" [render-text]="true" style="display: block;"></pdf-viewer>
+```
+Hierbei kann `obj` entweder ein String mit einer URL / Pfad zu einem PDF Dokument sein
+oder es ist auch möglich ein komplexeres Objekt zu machen:
+
+```typescript
+obj = {
+    data: atob(base64String)
+}
+```
+Hier habe ich mit dem `data`-Property direkt den base64 encoded String reingehängt. Das funktioniert,
+muss aber noch die `atob()` Methode drüber laufen lassen.
+
+Unser Ansatz funktioniert also gut.
+
+Für weitere Details siehe: <a href="https://openbase.com/js/ng2-pdf-viewer/documentation#src">Doku ng2-pdf-viewer</a>
+
+(Mit dieser Lib kann man auch Suchen im PDF, d.h. man könnte evtl. bei der Antwort dann den
+gesuchten Begriff nochmal im FE im PDF suchen, dann sollte das Highlighting im PDF auch funktionieren...)
+
 ### 13.5. 14:10 Jan
 
 Die base64 Verschlüsselung der einzelnen PDF-Seiten ist nun sichergestellt. Es wird ein anderes Gem

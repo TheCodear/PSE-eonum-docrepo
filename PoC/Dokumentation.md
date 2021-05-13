@@ -17,6 +17,23 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 13.5. 14:10 Jan
+
+Die base64 Verschlüsselung der einzelnen PDF-Seiten ist nun sichergestellt. Es wird ein anderes Gem
+(combine_pdf) verwendet, um das PDF in die einzelnen Seiten zu splitten. Diese werden in einem tmp Folder
+zwischengespeichert, dann während dem Eintragen in die Datenbank werden die einzelnen Seiten mit der 
+`File` Klasse geöffnet, ins base64 kodiert und in der Datenbank abgelegt. Der tmp Folder wird nach dem 
+Vorgang wieder gelöscht.
+
+Im Zuge dieser Arbeiten habe ich auch Änderungen in den Rake Tasks gemacht:
+
+- Der Rake Task für das MKB ist nun `poc:parse_mkb21`, der als Argument den Pfad
+  zum MKB Pdf hat.
+- Zum Ausführen also `rake poc:parse_mkb21['./beispiel/pfad']` in der Konsole ausführen.
+  Wobei `./beispiel/pfad` mit dem richtigen Pfad zum PDF ersetzt werden muss.
+
+Ansonsten bleibt alles gleich, insbesondere das Model.
+
 ### 9.5. 16:00
 
 Route `poc/search` wurde erstellt & Controller für poc wurde angefangen. War mir noch nicht sicher 

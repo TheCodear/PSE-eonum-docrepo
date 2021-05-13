@@ -17,6 +17,21 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 13.5.21 Janni & Sascha
+
+Man kann nun via `localhost:3000/de/poc/search?search=Suchbegriff` eine Suche starten. 
+Als Antwort erhält man ein Array mit Übereinstimmungen der Suche, welche nach `score` geordnet ist.
+Darin enthalten ist die Seitenzahl, der ganze Text dieser Seite sowie die Seite encoded als Base64. 
+
+Hierbei hat es im Moment noch `\n`im Base64, welches das Base64 unbrauchar macht. Muss man noch daraus entfernen oder 
+herausfinden, warum es reingeschribene wird
+
+Was ist wichtiger: Ordnung der Suchresultate nach Score oder nach aufsteigender Seitenzahl?
+
+
+
+
+
 ### 13.5. 16:24 Jan
 
 Es ist auch möglich, den base64 String direkt in einem PDF Viewer anzuzeigen. Um das auszutesten,

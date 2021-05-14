@@ -59,3 +59,24 @@ end
 - db
 
 - controller
+
+
+```
+class PocsController < ApplicationController
+  include SearchHelper
+
+  def search
+    # Set some defaults
+    search_term = params[:search] || 'Streptokokken'
+    fragment_size = params[:fragment_size] || 100
+    @results = Mkb.search_full_text(search_term, fragment_size)
+
+    #render json: @results
+    render json: assemble_fulltext_search_results(@results, params)
+  end
+
+
+end
+
+
+```

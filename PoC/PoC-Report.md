@@ -14,6 +14,15 @@
 
 
 
+FE -> search request
+
+BE -> translate search request -> query db -> sends back highlighted results + id of entry
+
+FE -> clicking on result will send request with id of entry to backend 
+
+BE -> sends back base64 of pdf -> can be displayed using pdf reader
+
+
 ## Technology
 
 - pdf gem

@@ -12,6 +12,20 @@
 
 -> index text
 
+
+
+FE -> search request
+
+BE -> translate search request -> query db -> sends back highlighted results + id of entry
+
+FE -> clicking on result will send request with id of entry to backend 
+
+BE -> sends back base64 of pdf -> can be displayed using pdf reader
+
+
+
+
+
 ## philosophy
 
 ### one table to rule them all:
@@ -39,16 +53,6 @@ every indexed document lives in the same db table. there is one huge index over 
 ### con:
 
 - more effort to maintain
-
-
-
-FE -> search request
-
-BE -> translate search request -> query db -> sends back highlighted results + id of entry
-
-FE -> clicking on result will send request with id of entry to backend 
-
-BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
 
 ## Technology

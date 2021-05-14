@@ -17,3 +17,9 @@
 ## Technology
 
 ## Scalability
+
+- model
+
+- db
+
+- controller

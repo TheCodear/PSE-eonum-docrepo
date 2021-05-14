@@ -48,6 +48,7 @@ every indexed document lives in the same db table. elasticsearch searches throug
 ### pro:
 - object oriented
 - more options in FE: select sources
+- queries can be optimized
 
 
 ### con:

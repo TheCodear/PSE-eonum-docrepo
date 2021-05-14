@@ -12,7 +12,21 @@
 
 -> index text
 
+## philosophy
 
+- one table to rule them all
+
+every indexed document lives in the same db table. there is one huge index over all text. 
+
+### pro:
+- no need for more models or controllers
+- easier to maintain
+
+
+### con:
+
+- huge index
+- huge table
 
 FE -> search request
 
@@ -89,7 +103,7 @@ class CreateMkbs < ActiveRecord::Migration[6.0]
 end
 ```
 
-- controller
+- controller 
 
 
 ```

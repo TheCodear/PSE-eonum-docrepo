@@ -58,6 +58,27 @@ end
 
 - db
 
+create a new db table for the new document containing at least the following rows:
+
+- version
+- page_nr
+- content_text_de
+
+if document is available in multiple languages add more fields in db plus add different indexes in model
+
+```
+class CreateMkbs < ActiveRecord::Migration[6.0]
+  def change
+    create_table :mkbs do |t|
+      t.string :version
+      t.integer :page_nr
+      t.text :content_text_de
+      t.text :page_base64
+    end
+  end
+end
+```
+
 - controller
 
 

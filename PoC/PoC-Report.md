@@ -30,17 +30,17 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
 ### one table to rule them all:
 
-every indexed document lives in the same db table. elasticsearch searches through all text in 1 index.
+  every indexed document lives in the same db table. elasticsearch searches through all text in 1 index.
 
-### pro:
-- no need for more models or controllers
-- easier to maintain
+  ### pro:
+  - no need for more models or controllers
+  - easier to maintain
 
 
-### con:
+  ### con:
 
-- huge index
-- huge table
+  - huge index
+  - huge table
 
 
 ### more controll:

@@ -17,6 +17,41 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 14.5.21 Jan
+
+Der Suchendpunkt ist jetzt so angepasst, dass das Fragment zurückkommt von Elasticsearch
+sowie die Version, die Seitenzahl und die Id in der Datenbank:
+
+```json
+[
+  {
+    "id": "integer",
+    "hit": "string",
+    "page_nr": "integer",
+    "version": "string"
+  },
+  ...
+]
+```
+
+Das Model Mkb ist jetzt noch timestamp bereinigt, d.h. man muss noch ein Rollback und
+eine neue Migration machen und dann zusätzlich das Mkb neu in die DB laden:
+```ruby
+rails db:rollback step=1
+rails db:migrate
+rails poc:parse_mkb21['./beispiel/pfad']
+```
+
+Was jetzt noch offen ist:
+ 
+- Das Suchquery wird noch nicht optimal zusammengesetzt, der Suchbegriff muss irgendwie
+noch ngramed und analyzed werden...
+  
+- Ein Endpunkt muss noch gebaut werden, um eine einzelne Page als base64 abholen zu 
+können
+  
+- Im FE Demo Projekt noch weiter machen.
+
 ### 13.5.21 Janni & Sascha
 
 Man kann nun via `localhost:3000/de/poc/search?search=Suchbegriff` eine Suche starten. 

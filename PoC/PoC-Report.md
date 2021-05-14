@@ -14,7 +14,7 @@
 
 ## philosophy
 
-- one table to rule them all
+### one table to rule them all:
 
 every indexed document lives in the same db table. there is one huge index over all text. 
 
@@ -27,6 +27,20 @@ every indexed document lives in the same db table. there is one huge index over 
 
 - huge index
 - huge table
+
+
+### more controll:
+
+### pro:
+- object oriented
+- more options in FE: select sources
+
+
+### con:
+
+- more effort to maintain
+
+
 
 FE -> search request
 

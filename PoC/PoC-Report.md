@@ -20,6 +20,8 @@
 
 ## Scalability
 
+For each new pdf source the following steps have to be made:
+
 - model
 
 - db

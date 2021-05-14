@@ -16,6 +16,8 @@
 
 ## Technology
 
+- pdf gem
+
 ## Scalability
 
 - model

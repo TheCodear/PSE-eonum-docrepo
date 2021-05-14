@@ -26,6 +26,9 @@ For each new pdf source the following steps have to be made:
 
 create model for new source.
 
+- indexed fields
+- short entry
+
 ```
 class Mkb < ApplicationRecord
 

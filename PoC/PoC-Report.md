@@ -62,6 +62,7 @@ create a new db table for the new document containing at least the following row
 
 - version
 - page_nr
+- page_base64
 - content_text_de
 
 if document is available in multiple languages add more fields in db plus add different indexes in model

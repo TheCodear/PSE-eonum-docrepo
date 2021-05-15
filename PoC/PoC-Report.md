@@ -61,7 +61,15 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
 ## Technology
 
-- pdf gem
+```
+# used for parsing
+gem 'pdf-reader'
+gem 'iguvium'
+
+# poc
+gem 'yomu'
+gem 'combine_pdf'
+```
 
 ## Scalability
 

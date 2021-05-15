@@ -85,9 +85,7 @@ Having multiple tables to maintain is more work. The minimum steps for each new 
 #### model
 
 - create model for new source.
-- 
 - indexed fields
-
 - short entry
 
 ```

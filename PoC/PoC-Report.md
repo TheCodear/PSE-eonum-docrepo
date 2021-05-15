@@ -3,7 +3,6 @@
 ## Data flow
 
 1. Add new source to webcrawler?
-
 Source is can be safed in directory of choice
 
 2. Run Rake Task to 

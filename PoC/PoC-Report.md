@@ -46,10 +46,10 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
   - huge table
 
 
-### more controll:
+### no pain no gain:
 
 ### pro:
-- object oriented
+- object oriented -> easier to debug and understand
 - more options in FE: select sources
 - queries can be optimized
 

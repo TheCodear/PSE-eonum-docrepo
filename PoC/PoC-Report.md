@@ -80,6 +80,7 @@ Our guess is that the approach of having only one table is flawed.
 - Everytime a search is made the whole index has to be searched. 
 - If something should corrupt the dataset the loss is bigger and takes more time to recover than having multiple tables containing only the data of one source.
 
+Having multiple tables to maintain is more work. The minimum steps are outlined here:
 
 For each new pdf source the following steps have to be made:
 

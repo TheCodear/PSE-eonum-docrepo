@@ -2,15 +2,19 @@
 
 ## Data flow
 
--> Take pdf 
+1. Add new source to webcrawler?
 
--> split pdf into single pages 
+Source is can be safed in directory of choice
 
--> extract text and convert single page to base64 
+2. Run Rake Task to 
 
--> safe to db
+- split pdf into single pages 
 
--> index text
+- extract text and convert single page to base64 
+
+- safe to db
+
+- index text
 
 
 

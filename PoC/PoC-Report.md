@@ -29,7 +29,7 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
 
 
-## philosophy
+## Philosophy
 
 ### one table to rule them all:
 

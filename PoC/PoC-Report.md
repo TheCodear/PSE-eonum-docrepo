@@ -71,7 +71,15 @@ gem 'yomu'
 gem 'combine_pdf'
 ```
 
-## Scalability
+## Scalability: 
+
+Our guess is that the approach of having only one table is flawed. 
+
+#### arguments:
+
+- Everytime a search is made the whole index has to be searched. 
+- If something should corrupt the dataset the loss is bigger and takes more time to recover than having multiple tables containing only the data of one source.
+
 
 For each new pdf source the following steps have to be made:
 

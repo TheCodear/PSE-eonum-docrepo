@@ -117,7 +117,14 @@ end
 
 ```
 
-- db
+#### raketask
+
+edit the rake task to add the new source to the database and start indexing. 
+
+??? WHICH LINES?
+
+
+#### migration 
 
 create a new db table for the new document containing at least the following rows:
 
@@ -141,8 +148,18 @@ class CreateMkbs < ActiveRecord::Migration[6.0]
 end
 ```
 
-- controller 
+### controller 
 
+here custom searching can be implemented. 
+To add more than one index to the search, the following line has to be ajusted.
+
+```
+ def self.search_in(version, search, options={})
+    options.merge! fields: %w(text)
+    h = self.search_in_helper(version, search, options)
+    self.search(h, [Klv1, Klv1Measure])
+  end
+```
 
 ```
 class PocsController < ApplicationController

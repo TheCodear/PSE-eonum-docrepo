@@ -17,6 +17,30 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 15.5.21 Jan
+
+Im Backend habe ich das Suchquery nun noch explizit mit dem 'german' analyzer
+erweitert, jetzt scheint die Suche korrekt zu funktionieren (man kann auf alle
+Fälle jetzt Schreibfehler machen:))
+
+Das Rake File habe ich nocheinmal minimal angepasst, am Befehl, um das MKB zu Verarbeiten
+hat sich nichts geändert, jedoch sind jetzt alle anderen Tasks sehr generisch und
+über Argumente steuerbar.
+
+Zudem habe ich auch noch einen ersten Draft des Endpunktes für das Base64 abholen
+entworfen und gepusht -> da darf gerne noch was dran gemacht werden.
+Die Route, um eine Seite zu holen ist `/poc/entry?id=5`, wobei id die wirkliche Datenbank
+id ist.
+
+Das Demo Frontend habe ich auch mal ein bisschen noch aufgepeppt, jetzt kann man
+suchen und sogar auch schon auf das Suchresultat klicken, um sich das entsprechende PDF 
+anzeigen zu lassen. Projekt findet man unter `https://github.com/TheCodear/ng-demo-pdfviewer`
+und kann das dort klonen, dann einfach `ng serve` um das FE zu serven, dabei beachten, dass
+ES und das BE laufen. Dann kann man auf `http://localhost:4200/pdf` wechseln und dort sich einen 
+Augenschein nehmen.
+
+Jetzt habe ich fertig:)
+
 ### 14.5.21 Jan
 
 Der Suchendpunkt ist jetzt so angepasst, dass das Fragment zurückkommt von Elasticsearch

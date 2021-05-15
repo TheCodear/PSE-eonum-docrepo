@@ -2,8 +2,8 @@
 
 ## Data flow
 
-1. Add new source to webcrawler?
-Source is can be safed in directory of choice
+1. The current webcrawler could be modified to crawl future sources
+
 
 2. Run Rake Task to 
 
@@ -84,7 +84,27 @@ Having multiple tables to maintain is more work. The minimum steps for each new 
 
 #### model
 
-- create model for new source.
+create model for new source.
+
+```
+bin/rails generate model newSource version:string text_de:text page_nr:integer page_base64:text
+```
+
+if document is available in multiple languages add more fields for text and the base64
+
+```
+bin/rails generate model newSource version:string text_de:text, text_fr:text page_nr:integer page_base64_de:text page_base64_fr:text
+```
+
+delete the following files if not needed:
+
+- test/fixtures/newSource.yml
+
+remove timestamp from migration if not needed
+- t.timestamps
+
+edit the model file:
+
 - indexed fields
 - short entry
 
@@ -120,31 +140,6 @@ end
 edit the rake task to add the new source to the database and start indexing. 
 
 ??? WHICH LINES?
-
-
-#### migration 
-
-create a new db table for the new document containing at least the following rows:
-
-- version
-- page_nr
-- page_base64
-- content_text_de
-
-if document is available in multiple languages add more fields in db plus add different indexes in model
-
-```
-class CreateMkbs < ActiveRecord::Migration[6.0]
-  def change
-    create_table :mkbs do |t|
-      t.string :version
-      t.integer :page_nr
-      t.text :content_text_de
-      t.text :page_base64
-    end
-  end
-end
-```
 
 ### controller 
 

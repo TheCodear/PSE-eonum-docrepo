@@ -35,12 +35,12 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
   every indexed document lives in the same db table. elasticsearch searches through all text in 1 index.
 
-  ### pro:
+  #### pro:
   - no need for more models or controllers
   - easier to maintain
 
 
-  ### con:
+  #### con:
 
   - huge index
   - huge table
@@ -48,13 +48,13 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
 ### no pain no gain:
 
-### pro:
+#### pro:
 - object oriented -> easier to debug and understand
 - more options in FE: select sources
 - queries can be optimized
 
 
-### con:
+#### con:
 
 - more effort to maintain
 

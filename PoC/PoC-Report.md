@@ -141,6 +141,12 @@ edit the rake task to add the new source to the database and start indexing.
 
 ??? WHICH LINES?
 
+start the rake task with:
+
+```
+rails poc:parse_mkb21['./beispiel/pfad']
+```
+
 ### controller 
 
 here custom searching can be implemented. 

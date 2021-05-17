@@ -142,7 +142,7 @@ end
 
 edit the rake task to add the new source to the database and start indexing. 
 
-??? WHICH LINES?
+MISSING AUTO LOCALE -> text_{locale} in db
 
 start the rake task with:
 

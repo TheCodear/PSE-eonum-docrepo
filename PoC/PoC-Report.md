@@ -150,14 +150,11 @@ rails poc:parse_mkb21['./beispiel/pfad']
 ### controller 
 
 here custom searching can be implemented. 
+MISSING: REGEX ADD MODELS TO QUERY
 To add more than one index to the search, the following line has to be ajusted.
 
 ```
- def self.search_in(version, search, options={})
-    options.merge! fields: %w(text)
-    h = self.search_in_helper(version, search, options)
-    self.search(h, [Klv1, Klv1Measure])
-  end
+@results = Mkb.search_multi_pdf("2021", search_term, [Mkb], fragment_size ,
 ```
 
 ```
@@ -167,15 +164,87 @@ class PocsController < ApplicationController
   def search
     # Set some defaults
     search_term = params[:search] || 'Streptokokken'
-    fragment_size = params[:fragment_size] || 100
-    @results = Mkb.search_full_text(search_term, fragment_size)
+      fragment_size = params[:fragment_size] || 100
+    @results = Mkb.search_multi_pdf("2021", search_term, [Mkb], fragment_size ,
+                                    ngramed: params[:ngramed] == '1', locale: params[:locale])
+    render json: assemble_pdf_search_results(@results, params)
+  end
 
-    #render json: @results
-    render json: assemble_fulltext_search_results(@results, params)
+  def get_single_page
+    id = params[:id] || 1
+    entry = Mkb.find(id)
+    render json: { :page => entry[:page_base64].gsub("\n", '') }
   end
 
 
 end
 
 
+```
+
+
+
+### searchable.rb
+
+The following additions were made to searchable.rb 
+
+Reasoning: 
+- Current code is not affected in search quality.
+- Fragment size can be modified
+
+```
+  def search_multi_pdf(version, search_term, models, fragment_size, options={})
+    options.merge! fields: %w(text)
+    h = self.search_full_text(search_term, fragment_size)
+    Elasticsearch::Model.search(h, models)
+  end
+```
+
+MISSING: AUTO ANALAYZER 
+
+```
+  def search_full_text(search_term, fragment_size)
+    query = {
+               "query": {
+                 "match": {
+                   "content_text_de": {
+                     "query": search_term,
+                     "analyzer": "german",
+                     "fuzziness": "AUTO"
+                   }
+                 }
+               },
+               "highlight": {
+                 "fields": {
+                   "content_text_de": {
+                     "fragment_size": fragment_size
+                   }
+                 }
+               }
+             }
+    return query
+  end
+```
+
+### search_helper.rb
+The following additions were made to search_helper.rb 
+Reasoning: 
+- data is strucutred very differently compared to code based sources
+
+```
+  # assembles the search results of pdf-document search
+  def assemble_pdf_search_results(results, params)
+    max_results = params[:max_results].to_i || 5
+    json = []
+    results.results.to_a[0..max_results-1].each do |res|
+      id = res['_source']['id']
+      page_nr = res['_source']['page_nr']
+      version = res['_source']['version']
+      res['highlight']['content_text_de'].each do |hit|
+        entry = {'id' => id, 'hit' => hit, 'page_nr' => page_nr, 'version' => version}
+        json << entry
+      end
+    end
+    json
+  end
 ```

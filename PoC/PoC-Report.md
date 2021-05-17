@@ -147,10 +147,12 @@ start the rake task with:
 rails poc:parse_mkb21['./beispiel/pfad']
 ```
 
-### controller 
+#### controller 
 
 here custom searching can be implemented. 
+
 MISSING: REGEX ADD MODELS TO QUERY
+
 To add more than one index to the search, the following line has to be ajusted.
 
 ```
@@ -184,7 +186,7 @@ end
 
 
 
-### searchable.rb
+#### searchable.rb
 
 The following additions were made to searchable.rb 
 
@@ -227,8 +229,11 @@ MISSING: AUTO ANALAYZER
 ```
 
 ### search_helper.rb
+
 The following additions were made to search_helper.rb 
+
 Reasoning: 
+
 - data is strucutred very differently compared to code based sources
 
 ```

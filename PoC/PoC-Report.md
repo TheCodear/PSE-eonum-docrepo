@@ -108,6 +108,9 @@ edit the model file:
 - indexed fields
 - short entry
 
+
+MISSING: AUTO TEXT LOCALE
+
 ```
 class Mkb < ApplicationRecord
 

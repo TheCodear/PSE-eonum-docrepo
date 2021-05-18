@@ -17,6 +17,10 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 18.5.21 Thea
+
+Im Frontend klappt das Highlighten von Suchbegriffen (Danke Jan). Allerdings sind im Handbuch schon einige Begriffe mit der gleichen Farbe markiert, was die Darstellung teilweise etwas unübersichtlich macht. Des Weiteren kann man die vordere oder nächste Seite anzeigen lassen und das Pdf um 90 Grad drehen. Die default route ist auch angepasst, so dass man nicht manuell immer noch /pdf eingeben muss.
+
 ### 15.5.21 Jan
 
 Im Backend habe ich das Suchquery nun noch explizit mit dem 'german' analyzer

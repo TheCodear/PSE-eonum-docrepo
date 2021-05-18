@@ -2,8 +2,15 @@
 
 ## Data flow
 
-1. The current webcrawler could be modified to crawl future sources
-
+1. For crawling the new sources, some effort needs to be put into building a
+crawler. E.g. for the 'Medizinisches Kodierhandbuch' source the website to be
+   crawled is quite different from the KLV1 page (BAG vs. BFS), this means that
+   the KLV1-Crawler cannot be reused so easily. The best way to go would probably be
+   to introduce an abstract crawler, which unifies the common behaviour of each 
+   crawler and then for each source generate a subclass. But for MKB nothing has been
+   done during PoC. (Alternatively the crawling could also be put into the rake
+   task...).
+   
 
 2. Run Rake Task to 
 
@@ -256,3 +263,16 @@ Reasoning:
     json
   end
 ```
+
+## Demo-Frontend
+
+For exploring if the designed solution also works in the frontend, we created a small
+demo project as throw-away prototype, which simply sends search request to the Backend
+and presents the results to the user. The FE also renders the PDF page when clicking on 
+a search result.
+
+This demo project showed, that our designed solution works full stack, including the base64
+encoding, which can easily be rendered directly as PDF by the used pdf-viewer library.
+
+The Angular demo project can be checked out <a href=https://github.com/TheCodear/ng-demo-pdfviewer>here</a>.
+More details are also provided directly in the project.

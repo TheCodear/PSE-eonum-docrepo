@@ -17,6 +17,15 @@ TODO: weiter verfeinern!
 
 ## Activity Log
 
+### 18.5.21 Jan
+
+Im Backend wird nun bei der Response für die Suche jeweils noch das von ES gehighlightete
+Wort zurückgegeben (als 'highlight' Feld in der Response).
+
+Das Demo-FE kann damit nun auch umgehen und sucht entsprechend diesen Begriff im PDF und nicht
+den eingegebenen in der Suche, so wird im PDF dann auch tatsächlich etwas gefunden, auch wenn
+bei der Suche ein Schreibfehler gemacht worden ist.
+
 ### 18.5.21 Thea
 
 Im Frontend klappt das Highlighten von Suchbegriffen (Danke Jan). Allerdings sind im Handbuch schon einige Begriffe mit der gleichen Farbe markiert, was die Darstellung teilweise etwas unübersichtlich macht. Des Weiteren kann man die vordere oder nächste Seite anzeigen lassen und das Pdf um 90 Grad drehen. Die default route ist auch angepasst, so dass man nicht manuell immer noch /pdf eingeben muss.

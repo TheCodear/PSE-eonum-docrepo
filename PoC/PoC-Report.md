@@ -97,6 +97,8 @@ create model for new source.
 bin/rails generate model newSource version:string text_de:text page_nr:integer page_base64:text
 ```
 
+NOT TRUE!
+
 if document is available in multiple languages add more fields for text and the base64
 
 ```

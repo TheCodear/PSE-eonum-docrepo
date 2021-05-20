@@ -91,6 +91,8 @@ Our guess is that the approach of having only one table is flawed.
 
 Having multiple tables to maintain is more work. The minimum steps for each new pdf source are outlined here:
 
+
+
 ### model
 
 create model for new source.
@@ -217,6 +219,8 @@ Reasoning:
 ```
 
 MISSING: AUTO LANGUAGE FOR TABLE ROW AND ANALYZER: pass locale as argument in search_full_text, so table row and analyzer get adjusted accordingly
+
+Resoning: MISSING
 
 ```
   def search_full_text(search_term, fragment_size)

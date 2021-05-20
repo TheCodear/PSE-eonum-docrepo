@@ -55,6 +55,8 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
 
 ### no pain no gain:
 
+every new source has an own model, containing data of multiple languages if available. 
+
 #### pro:
 - object oriented -> easier to debug and understand
 - more options in FE: select sources
@@ -82,27 +84,19 @@ gem 'combine_pdf'
 
 Our guess is that the approach of having only one table is flawed. 
 
-#### arguments:
+### arguments:
 
 - Everytime a search is made the whole index has to be searched. 
 - If something should corrupt the dataset the loss is bigger and takes more time to recover than having multiple tables containing only the data of one source.
 
 Having multiple tables to maintain is more work. The minimum steps for each new pdf source are outlined here:
 
-#### model
+### model
 
 create model for new source.
 
 ```
-bin/rails generate model newSource version:string text_de:text page_nr:integer page_base64:text
-```
-
-NOT TRUE!
-
-if document is available in multiple languages add more fields for text and the base64
-
-```
-bin/rails generate model newSource version:string text_de:text, text_fr:text page_nr:integer page_base64_de:text page_base64_fr:text
+bin/rails generate model newSource version:string text_de:text, text_fr:text, text_it:text, page_nr:integer page_base64_de:text page_base64_fr:text, page_base64_it:text
 ```
 
 delete the following files if not needed:
@@ -118,36 +112,41 @@ edit the model file:
 - short entry
 
 
-MISSING: AUTO TEXT LOCALE
-
 ```
-class Mkb < ApplicationRecord
+class NewSource < ApplicationRecord
 
   include Elasticsearch::Model
   include Rails.application.routes.url_helpers
 
   # avoid conflicts with other application that index the same model
-  index_name    "medcodesearch_mkb"
+  index_name    "medcodesearch_newSource"
 
   extend Searchable
 
   settings analysis: Searchable::CUSTOM_ANALYZERS do
     mappings dynamic: 'false' do
       indexes :version, type: :string, index: :not_analyzed
-      Searchable.indexes_internationalized(self, %w(content_text), %w(de))
+      Searchable.indexes_internationalized(self, %w(text), %w(de fr it))
     end
   end
 
-  def short_entry
-    {page_nr: self.page_nr, content_text_de: self.content_text_de, page_base64: page_base64}
+  def text
+    send("text_#{I18n.locale}")
   end
 
+  def page_base64
+    send("page_base64_#{I18n.locale}")
+  end
+
+  def short_entry
+    {page_nr: self.page_nr, text: self.text, page_base64: self.page_base64}
+  end
 
 end
 
 ```
 
-#### raketask
+### poc.rake
 
 edit the rake task to add the new source to the database and start indexing. 
 
@@ -156,16 +155,16 @@ MISSING AUTO LOCALE -> text_{locale} in db
 start the rake task with:
 
 ```
-rails poc:parse_mkb21['./beispiel/pfad']
+rails poc:parse_mkb21['./beispiel/pfad/newSource.pdf']
 ```
 
-#### controller 
+### pocs_controller.rb
 
 here custom searching can be implemented. 
 
 MISSING: REGEX ADD MODELS TO QUERY
 
-To add more than one index to the search, the following line has to be ajusted.
+To add more than one index to the search, the following line has to be adjusted.
 
 ```
 @results = Mkb.search_multi_pdf("2021", search_term, [Mkb], fragment_size ,
@@ -187,9 +186,12 @@ class PocsController < ApplicationController
   def get_single_page
     id = params[:id] || 1
     entry = Mkb.find(id)
-    render json: { :page => entry[:page_base64].gsub("\n", '') }
+    render json: { :page => entry[:self.page_base64].gsub("\n", '') }
   end
 
+  def page_base64
+    send("page_base64_#{I18n.locale}")
+  end
 
 end
 
@@ -198,7 +200,7 @@ end
 
 
 
-#### searchable.rb
+### searchable.rb
 
 The following additions were made to searchable.rb 
 
@@ -214,14 +216,14 @@ Reasoning:
   end
 ```
 
-MISSING: AUTO ANALAYZER 
+MISSING: AUTO LANGUAGE FOR TABLE ROW AND ANALYZER: pass locale as argument in search_full_text, so table row and analyzer get adjusted accordingly
 
 ```
   def search_full_text(search_term, fragment_size)
     query = {
                "query": {
                  "match": {
-                   "content_text_de": {
+                   "text_de": {
                      "query": search_term,
                      "analyzer": "german",
                      "fuzziness": "AUTO"
@@ -230,7 +232,7 @@ MISSING: AUTO ANALAYZER
                },
                "highlight": {
                  "fields": {
-                   "content_text_de": {
+                   "text_de": {
                      "fragment_size": fragment_size
                    }
                  }
@@ -257,7 +259,7 @@ Reasoning:
       id = res['_source']['id']
       page_nr = res['_source']['page_nr']
       version = res['_source']['version']
-      res['highlight']['content_text_de'].each do |hit|
+      res['highlight']['text_de'].each do |hit|
         entry = {'id' => id, 'hit' => hit, 'page_nr' => page_nr, 'version' => version}
         json << entry
       end

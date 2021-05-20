@@ -133,18 +133,7 @@ class NewSource < ApplicationRecord
     end
   end
 
-  def text
-    send("text_#{I18n.locale}")
-  end
-
-  def page_base64
-    send("page_base64_#{I18n.locale}")
-  end
-
-  def short_entry
-    {page_nr: self.page_nr, text: self.text, page_base64: self.page_base64}
-  end
-
+ 
 end
 
 ```
@@ -189,18 +178,17 @@ class PocsController < ApplicationController
   def get_single_page
     id = params[:id] || 1
     entry = Mkb.find(id)
-    render json: { :page => entry[:self.page_base64].gsub("\n", '') }
+    render json: { :page => entry[page_base64].gsub("\n", '') }
   end
 
   def page_base64
-    send("page_base64_#{I18n.locale}")
+    return ("page_base64_#{I18n.locale}").to_sym
   end
 
 end
 
 
 ```
-
 
 
 ### searchable.rb

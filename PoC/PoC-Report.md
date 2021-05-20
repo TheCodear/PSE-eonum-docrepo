@@ -66,7 +66,8 @@ every new source has an own model, containing data of multiple languages if avai
 #### con:
 
 - more effort to maintain
-
+- db might be inconsistent eg. page 112 of the german version might show different information than page 112 of the french version.
+If this is a deal breaker a different approach could be to haave 3 models per document each only containing data of 1 langauge. 
 
 ## Technology
 

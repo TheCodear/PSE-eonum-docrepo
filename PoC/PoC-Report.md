@@ -66,7 +66,8 @@ every new source has an own model, containing data of multiple languages if avai
 #### con:
 
 - more effort to maintain
-
+- db might be inconsistent eg. page 112 of the german version might show different information than page 112 of the french version.
+If this is a deal breaker a different approach could be to haave 3 models per document each only containing data of 1 langauge. 
 
 ## Technology
 
@@ -90,6 +91,8 @@ Our guess is that the approach of having only one table is flawed.
 - If something should corrupt the dataset the loss is bigger and takes more time to recover than having multiple tables containing only the data of one source.
 
 Having multiple tables to maintain is more work. The minimum steps for each new pdf source are outlined here:
+
+
 
 ### model
 
@@ -130,18 +133,7 @@ class NewSource < ApplicationRecord
     end
   end
 
-  def text
-    send("text_#{I18n.locale}")
-  end
-
-  def page_base64
-    send("page_base64_#{I18n.locale}")
-  end
-
-  def short_entry
-    {page_nr: self.page_nr, text: self.text, page_base64: self.page_base64}
-  end
-
+ 
 end
 
 ```
@@ -186,18 +178,17 @@ class PocsController < ApplicationController
   def get_single_page
     id = params[:id] || 1
     entry = Mkb.find(id)
-    render json: { :page => entry[:self.page_base64].gsub("\n", '') }
+    render json: { :page => entry[page_base64].gsub("\n", '') }
   end
 
   def page_base64
-    send("page_base64_#{I18n.locale}")
+    return ("page_base64_#{I18n.locale}").to_sym
   end
 
 end
 
 
 ```
-
 
 
 ### searchable.rb
@@ -217,6 +208,8 @@ Reasoning:
 ```
 
 MISSING: AUTO LANGUAGE FOR TABLE ROW AND ANALYZER: pass locale as argument in search_full_text, so table row and analyzer get adjusted accordingly
+
+Resoning: MISSING
 
 ```
   def search_full_text(search_term, fragment_size)

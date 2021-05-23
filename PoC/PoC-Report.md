@@ -23,16 +23,13 @@ crawler. E.g. for the 'Medizinisches Kodierhandbuch' source the website to be
 - index text
 
 
-
 FE -> search request
 
 BE -> translate search request -> query db -> sends back highlighted results + id of entry
 
 FE -> clicking on result will send request with id of entry to backend 
 
-BE -> sends back base64 of pdf -> can be displayed using pdf reader
-
-
+BE -> sends back base64 of pdf -> can be displayed using pdf reader 
 
 
 
@@ -67,7 +64,7 @@ every new source has an own model, containing data of multiple languages if avai
 
 - more effort to maintain
 - db might be inconsistent eg. page 112 of the german version might show different information than page 112 of the french version.
-If this is a deal breaker a different approach could be to haave 3 models per document each only containing data of 1 langauge. 
+If this is a deal breaker a different approach could be to have 3 models per document each only containing data of 1 langauge or adding checks to the parser. 
 
 ## Technology
 
@@ -99,7 +96,7 @@ Having multiple tables to maintain is more work. The minimum steps for each new 
 create model for new source.
 
 ```
-bin/rails generate model newSource version:string text_de:text, text_fr:text, text_it:text, page_nr:integer page_base64_de:text page_base64_fr:text, page_base64_it:text
+bin/rails generate model newSource version:string, page_nr:integer, text_de:text, text_fr:text, text_it:text, page_base64_de:text page_base64_fr:text, page_base64_it:text
 ```
 
 delete the following files if not needed:
@@ -112,17 +109,11 @@ remove timestamp from migration if not needed
 edit the model file:
 
 - indexed fields
-- short entry
 
 
 ```
-class NewSource < ApplicationRecord
-
-  include Elasticsearch::Model
-  include Rails.application.routes.url_helpers
-
-  # avoid conflicts with other application that index the same model
-  index_name    "medcodesearch_newSource"
+ # avoid conflicts with other application that index the same model
+  index_name    "medcodesearch_newsource"
 
   extend Searchable
 
@@ -133,28 +124,20 @@ class NewSource < ApplicationRecord
     end
   end
 
- 
-end
-
 ```
 
 ### poc.rake
 
-edit the rake task to add the new source to the database and start indexing. 
 
-MISSING AUTO LOCALE -> text_{locale} in db
-
-start the rake task with:
+start the rake task with (Important: no spaces inbetween files):
 
 ```
-rails poc:parse_mkb21['./beispiel/pfad/newSource.pdf']
+rake poc:parse_mkb21["beispiel/pfad/deutsch","beispiel/pfad/französisch","beispiel/pfad/italienisch"]
 ```
 
 ### pocs_controller.rb
 
-here custom searching can be implemented. 
-
-MISSING: REGEX ADD MODELS TO QUERY
+here custom searching could be implemented. 
 
 To add more than one index to the search, the following line has to be adjusted.
 
@@ -163,15 +146,14 @@ To add more than one index to the search, the following line has to be adjusted.
 ```
 
 ```
-class PocsController < ApplicationController
-  include SearchHelper
+include SearchHelper
 
   def search
     # Set some defaults
     search_term = params[:search] || 'Streptokokken'
-      fragment_size = params[:fragment_size] || 100
-    @results = Mkb.search_multi_pdf("2021", search_term, [Mkb], fragment_size ,
-                                    ngramed: params[:ngramed] == '1', locale: params[:locale])
+    fragment_size = params[:fragment_size] || 100
+    @results = Mkb.search_multi_pdf("MEDKHB-2021", search_term, [Mkb], fragment_size, params[:locale],
+                                    ngramed: params[:ngramed] == '1')
     render json: assemble_pdf_search_results(@results, params)
   end
 
@@ -182,11 +164,8 @@ class PocsController < ApplicationController
   end
 
   def page_base64
-    return ("page_base64_#{I18n.locale}").to_sym
+    ("page_base64_#{I18n.locale}").to_sym
   end
-
-end
-
 
 ```
 
@@ -200,38 +179,33 @@ Reasoning:
 - Fragment size can be modified
 
 ```
-  def search_multi_pdf(version, search_term, models, fragment_size, options={})
+ def search_multi_pdf(version, search_term, models, fragment_size, locale, options={})
     options.merge! fields: %w(text)
-    h = self.search_full_text(search_term, fragment_size)
+    h = self.search_full_text(search_term, fragment_size, locale)
     Elasticsearch::Model.search(h, models)
   end
 ```
 
-MISSING: AUTO LANGUAGE FOR TABLE ROW AND ANALYZER: pass locale as argument in search_full_text, so table row and analyzer get adjusted accordingly
-
-Resoning: MISSING
-
 ```
-  def search_full_text(search_term, fragment_size)
-    query = {
-               "query": {
-                 "match": {
-                   "text_de": {
-                     "query": search_term,
-                     "analyzer": "german",
-                     "fuzziness": "AUTO"
-                   }
-                 }
-               },
-               "highlight": {
-                 "fields": {
-                   "text_de": {
-                     "fragment_size": fragment_size
-                   }
-                 }
-               }
-             }
-    return query
+  def search_full_text(search_term, fragment_size, locale)
+    {
+      "query": {
+        "match": {
+          "text_#{locale}": {
+            "query": search_term,
+            "analyzer": LANGUAGE_ANALYZERS[locale.to_sym].to_s,
+            "fuzziness": "AUTO"
+          }
+        }
+      },
+      "highlight": {
+        "fields": {
+          "text_#{locale}": {
+            "fragment_size": fragment_size
+          }
+        }
+      }
+    }
   end
 ```
 

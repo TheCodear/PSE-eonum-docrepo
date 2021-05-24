@@ -50,7 +50,7 @@ BE -> sends back base64 of pdf -> can be displayed using pdf reader
   - huge table
 
 
-### no pain no gain:
+### divide and conquer:
 
 every new source has an own model, containing data of multiple languages if available. 
 

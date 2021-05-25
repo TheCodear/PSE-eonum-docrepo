@@ -235,6 +235,7 @@ Reasoning:
   end
 ```
 
+
 ## Demo-Frontend
 
 For exploring if the designed solution also works in the frontend, we created a small
@@ -247,3 +248,12 @@ encoding, which can easily be rendered directly as PDF by the used pdf-viewer li
 
 The Angular demo project can be checked out <a href=https://github.com/TheCodear/ng-demo-pdfviewer>here</a>.
 More details are also provided directly in the project.
+
+
+### known issuse
+
+- text in tabels (especially landscape format) can not be extracted properly -> therefore the text in the table can not be indexed properly or seached for
+- elasticsearch query could be optimized (field boost etc.) -> if exsisting functions of BE could be used, then this issue will be resolved
+- Db inconsistencies (eg.  page 152 of german version might not show the same thing as page 152 of french version). This could be resolved by using 3 Models for each new source. Each containing only data of one language
+
+

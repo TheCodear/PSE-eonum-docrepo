@@ -255,5 +255,6 @@ More details are also provided directly in the project.
 - text in tabels (especially landscape format) can not be extracted properly -> therefore the text in the table can not be indexed properly or seached for
 - elasticsearch query could be optimized (field boost etc.) -> if exsisting functions of BE could be used, then this issue will be resolved
 - Db inconsistencies (eg.  page 152 of german version might not show the same thing as page 152 of french version). This could be resolved by using 3 Models for each new source. Each containing only data of one language
+- Highlight in pdf matches the color of changed text in Medizinisches Kodierhandbuch. Look into wether the color of the highlight is changable 
 
 

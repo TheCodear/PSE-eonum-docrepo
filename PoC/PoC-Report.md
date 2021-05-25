@@ -135,6 +135,8 @@ start the rake task with (Important: no spaces inbetween files):
 rake poc:parse_mkb21["beispiel/pfad/deutsch","beispiel/pfad/französisch","beispiel/pfad/italienisch"]
 ```
 
+For new sources add a new rake task or modify the exsting one (parse_mkb21). 
+
 ### pocs_controller.rb
 
 here custom searching could be implemented. 
